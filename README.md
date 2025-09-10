@@ -1,11 +1,5 @@
 # Pilldroid
 
-> I apologize. For know, even string exist in English, _Pilldroid_ is a French
-> only application. That because the global drugs database contain only French
-> drug's nommage. If you can find a way to provide another country global
-> database,feel free to [contact
-> me](mailto://pilldroid@foucry,net?Subject="Another database")
->
 Pilldroid est une application de gestion de stock **théorique** de médicament à
 destination des personnes résidant en France.
 
@@ -22,7 +16,7 @@ pour téléphone Android©.
 
 ## Pourquoi « Stock théorique » ?
 
-Pilldroid ne sait ipas (et n'a aucun moyen de savoir) si vous avez ou non pris vos
+Pilldroid ne sait pas (et n'a aucun moyen de savoir) si vous avez ou non pris vos
 médicaments. Pilldroid effectue, simple calcul : `stock connu - prise par
 jour`. Ce calcul est fait tous les jours entre 11h et midi.
 
@@ -63,17 +57,3 @@ Mon code est de piètre qualité et mes connaissances Java maigrelettes toute
 amélioration **que je comprends** sera la bienvenue.
 
 Marché de niche, Pilldroid a besoin de testeuses et testeurs.
-
-Et si vous ne pouvez-vous pas par ces moyens, vous pouvez m'aider à payer mon
-électricité et mon accès internet :
-<script src="https://liberapay.com/Pilldroid/widgets/button.js"></script>
-<noscript><a href="https://liberapay.com/Pilldroid/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
-
-## L'application Pilldroid dispose telle d'un site web ?
-
-Oui, bien sûr : [Pilldroid](https://pilldroid.foucry.net)
-
-## Contact
-
-Le site web en premier lieu et l'adresse mail
-[pilldroid@foucry.net](mailto://pilldroid@foucry.net:Subject="Contact")

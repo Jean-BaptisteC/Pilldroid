@@ -70,7 +70,8 @@
     <string name="notInterpreted">Bar code cannot be interpreted</string>
     <string name="cancelled_scan">Scan canceled</string>
     <string name="missing_camera_permission">Missing camera permission</string>
-    <string name="Yes">Yes</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string name="Yes_understood">Yes, I understood</string>
     <string name="understood">I understood that the developer of Pilldroid cannot be responsible of your medication management. IT\'S YOU OWN RESPONSIBILITY.</string>
     <string name="Undo">Undo</string>

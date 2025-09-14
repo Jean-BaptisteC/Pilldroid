@@ -13,7 +13,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -43,7 +42,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textview.MaterialTextView;
-import com.google.zxing.client.android.BuildConfig;
 import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.ScanOptions;
 
@@ -395,7 +393,7 @@ public class DrugListActivity extends AppCompatActivity {
             msg.setText(msgString);
             cpl.setText(getString(R.string.addInList));
             icon.setImageResource(R.drawable.tickmark);
-            btn.setText(getString(R.string.Yes));
+            btn.setText(getString(R.string.yes));
             btn.setOnClickListener(v -> {
                 // TODO Auto-generated method stub
                 dlg.dismiss();

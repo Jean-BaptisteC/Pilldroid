@@ -1,9 +1,7 @@
 package net.foucry.pilldroid;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,7 +19,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -67,16 +65,13 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);
+        if (prefManager.isFirstTimeLaunch()) {
+            askForComprehensive();
+        }
         if (!prefManager.isFirstTimeLaunch()) {
             finish();
         }
-
         prefManager.setFirstTimeLaunch(false);
-
-        if (!prefManager.isUnderstood()) {
-            askForComprehensive();
-            prefManager.setUnderstood(true);
-        }
 
         setContentView(R.layout.welcome_activity);
 
@@ -131,27 +126,11 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void askForComprehensive() {
-        final Dialog dlg = new Dialog(this);
-        dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dlg.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        dlg.setContentView(R.layout.custom_dialog_layout_one_button);
+        final MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
+        dlg.setMessage(getString(R.string.understood));
+        dlg.setPositiveButton(R.string.yes, (dialog, id) -> dialog.dismiss());
         dlg.setCancelable(false);
-        MaterialTextView msg = dlg.findViewById(R.id.msg);
-        String msgString;
-        MaterialTextView cpl = dlg.findViewById(R.id.cpl);
-        ShapeableImageView icon = dlg.findViewById(R.id.image);
-        MaterialButton btn = dlg.findViewById(R.id.txtClose);
         dlg.show();
-
-        msgString = getString(R.string.understood);
-        msg.setText(msgString);
-        cpl.setVisibility(View.GONE);
-        //icon.setImageResource(R.drawable.pilldroid_icon);
-        btn.setText(R.string.Yes_understood);
-        btn.setOnClickListener(v -> {
-            // TODO Auto-generated method stub
-            dlg.dismiss();
-        });
     }
 
     private void addBottomDots(int currentPage) {

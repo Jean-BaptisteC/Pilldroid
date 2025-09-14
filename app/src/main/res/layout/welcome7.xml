@@ -12,7 +12,7 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:contentDescription="@string/unhappy_face"
-        app:srcCompat="@drawable/lower_stock_vect" />
+        app:srcCompat="@drawable/ic_sentiment_dissatisfied" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="349dp"

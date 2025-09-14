@@ -13,7 +13,7 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:contentDescription="@string/neutral_face"
-        app:srcCompat="@drawable/warning_stock_vect" />
+        app:srcCompat="@drawable/ic_sentiment_neutral" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"

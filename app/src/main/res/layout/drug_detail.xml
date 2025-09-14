@@ -17,21 +17,18 @@
         layout="@layout/info_cell"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <!--        android:layout_marginTop="5sp" />-->
 
     <include
         android:id="@+id/administration_cell"
         layout="@layout/info_cell"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-    <!--        android:layout_marginTop="5sp" />-->
 
     <include
         android:id="@+id/stock_cell"
         layout="@layout/value_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <!--        android:layout_marginTop="30sp" />-->
 
     <include
         android:id="@+id/take_cell"
@@ -44,7 +41,6 @@
         layout="@layout/value_input_threshold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <!--        android:layout_marginTop="15sp" />-->
 
     <include
         android:id="@+id/alert_cell"

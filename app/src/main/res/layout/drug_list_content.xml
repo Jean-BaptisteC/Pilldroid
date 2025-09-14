@@ -19,7 +19,7 @@
             android:layout_centerVertical="true"
             android:layout_marginStart="5dp"
             android:contentDescription="@string/stockIcon"
-            app:srcCompat="@drawable/ok_stock_vect" />
+            app:srcCompat="@drawable/ic_sentiment_satisfied" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value"

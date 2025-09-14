@@ -551,14 +551,14 @@ public class DrugListActivity extends AppCompatActivity {
                 int remainingStock = (int) Math.floor(mValues.get(position).getStock() / mValues.get(position).getTake());
                 if (remainingStock <= mValues.get(position).getAlertThreshold()) {
                     holder.mView.setBackgroundResource(R.drawable.gradient_bg_alert);
-                    holder.mIconView.setImageResource(R.drawable.lower_stock_vect);
+                    holder.mIconView.setImageResource(R.drawable.ic_sentiment_dissatisfied);
                 } else if ((remainingStock > mValues.get(position).getAlertThreshold()) &&
                         (remainingStock <= (mValues.get(position).getWarnThreshold()))) {
                     holder.mView.setBackgroundResource(R.drawable.gradient_bg_warning);
-                    holder.mIconView.setImageResource(R.drawable.warning_stock_vect);
+                    holder.mIconView.setImageResource(R.drawable.ic_sentiment_neutral);
                 } else {
                     holder.mView.setBackgroundResource(R.drawable.gradient_bg_ok);
-                    holder.mIconView.setImageResource(R.drawable.ok_stock_vect);
+                    holder.mIconView.setImageResource(R.drawable.ic_sentiment_satisfied);
                 }
 
                 holder.mView.setOnClickListener(v -> {

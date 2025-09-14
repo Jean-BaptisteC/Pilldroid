@@ -23,7 +23,7 @@
             android:layout_marginBottom="@dimen/fab_margin"
             app:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/flashlightButton"
-            app:srcCompat="@drawable/ic_baseline_highlight_24" />
+            app:srcCompat="@drawable/ic_flashlight_on" />
     </com.journeyapps.barcodescanner.DecoratedBarcodeView>
 
 </RelativeLayout>

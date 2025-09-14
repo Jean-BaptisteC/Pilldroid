@@ -432,7 +432,7 @@ public class DrugListActivity extends AppCompatActivity {
 
                     Paint p = new Paint();
                     Drawable icon;
-                    icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_trash_can_outline);
+                    icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_trash_can);
 
                     int xMarkMargin = (int) getApplicationContext().getResources().getDimension(R.dimen.fab_margin);
 
@@ -443,7 +443,7 @@ public class DrugListActivity extends AppCompatActivity {
 
                     if (dX > 0) {
                         p.setColor(getColor(R.color.bg_screen3));
-                        icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_edit_black_48dp);
+                        icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_edit);
 
                         // Draw Rect with varying right side, equal to displacement dX
                         c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(), dX,

@@ -65,13 +65,8 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        boolean DEBUG = false;
-
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);
-        if (DEBUG) {
-            prefManager.setFirstTimeLaunch(true);
-        }
         if (!prefManager.isFirstTimeLaunch()) {
             finish();
         }

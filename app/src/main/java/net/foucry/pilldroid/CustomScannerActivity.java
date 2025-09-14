@@ -33,8 +33,6 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
 
         setContentView(R.layout.custom_scanner_activty);
 
-        //barcodeScannerView.setTorchListener(this);
-
         findViewById(R.id.keyboard_button).setOnClickListener(this::onKeyboard);
         findViewById(R.id.cancel_button).setOnClickListener(this::onCancel);
         findViewById(R.id.switch_flashlight).setOnClickListener(this::switchFlashlight);

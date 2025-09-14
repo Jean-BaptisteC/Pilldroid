@@ -8,8 +8,6 @@ import android.app.Dialog;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -88,20 +86,6 @@ public class DrugListActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
-        if (BuildConfig.DEBUG) {
-            String manufacturer = Build.MANUFACTURER;
-            String model = Build.MODEL;
-            int version = Build.VERSION.SDK_INT;
-            String versionRelease = Build.VERSION.RELEASE;
-
-            Log.e(TAG, "manufacturer " + manufacturer
-                    + " \n model " + model
-                    + " \n version " + version
-                    + " \n versionRelease " + versionRelease
-            );
-        }
-
         // Create medicines Room database from drugs.db files
         medicines = MedicineDatabase.getInstanceDatabase(this);
 
@@ -142,12 +126,7 @@ public class DrugListActivity extends AppCompatActivity {
         if (nm != null) {
             nm.cancelAll();
         }
-
-        // start tutorial (only in non debug mode)
-        // if(!net.foucry.pilldroid.BuildConfig.DEBUG) {
-        Log.i(TAG, "Launch tutorial");
         startActivity(new Intent(this, WelcomeActivity.class));
-        // }
     }
 
     @Override
@@ -234,10 +213,6 @@ public class DrugListActivity extends AppCompatActivity {
 
                             if (resultCode != 1) {
                                 if (returnCode == 3) {
-                                    if (BuildConfig.DEBUG) {
-                                        Toast.makeText(this, "Keyboard input",
-                                                Toast.LENGTH_SHORT).show();
-                                    }
                                     Log.d(TAG, "Keyboard Input");
                                     showInputDialog();
                                 } else if (returnCode == 2) {
@@ -245,10 +220,6 @@ public class DrugListActivity extends AppCompatActivity {
                                 }
                             } else {
                                 Log.d(TAG, "Scanned formatName = " + bundle.getString(BARCODE_FORMAT_NAME));
-                                if (BuildConfig.DEBUG) {
-                                    Toast.makeText(this, "Scanned: " + bundle.getString(BARCODE_FORMAT_NAME),
-                                            Toast.LENGTH_LONG).show();
-                                }
 
                                 String cip13;
                                 switch (Objects.requireNonNull(bundle.getString(BARCODE_FORMAT_NAME))) {
@@ -578,16 +549,6 @@ public class DrugListActivity extends AppCompatActivity {
             }
         }).attachToRecyclerView(recyclerView);
 
-    }
-
-    private String getAppName() {
-        PackageManager packageManager = getApplicationContext().getPackageManager();
-        ApplicationInfo applicationInfo = null;
-        try {
-            applicationInfo = packageManager.getApplicationInfo(this.getPackageName(), 0);
-        } catch (final PackageManager.NameNotFoundException ignored) {
-        }
-        return (String) ((applicationInfo != null) ? packageManager.getApplicationLabel(applicationInfo) : "???");
     }
 
     /**

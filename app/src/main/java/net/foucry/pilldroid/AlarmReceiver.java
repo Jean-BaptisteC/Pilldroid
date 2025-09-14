@@ -36,21 +36,15 @@ public class AlarmReceiver extends BroadcastReceiver {
         Date today;
         Date tomorrow;
         LocalTime todayNow = LocalTime.now();
-
-        if (BuildConfig.DEBUG) {
-            Date nextSchedule = calendar.getTime();
-            calendar.setTimeInMillis(nextSchedule.getTime());
+        calendar.set(Calendar.HOUR_OF_DAY, 11);
+        calendar.set(Calendar.MINUTE, 15);
+        today = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_YEAR, 1);
+        tomorrow = calendar.getTime();
+        if (todayNow.isBefore(LocalTime.NOON)) {
+            calendar.setTimeInMillis(today.getTime());
         } else {
-            calendar.set(Calendar.HOUR_OF_DAY, 11);
-            calendar.set(Calendar.MINUTE, 15);
-            today = calendar.getTime();
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
-            tomorrow = calendar.getTime();
-            if (todayNow.isBefore(LocalTime.NOON)) {
-                calendar.setTimeInMillis(today.getTime());
-            } else {
-                calendar.setTimeInMillis(tomorrow.getTime());
-            }
+            calendar.setTimeInMillis(tomorrow.getTime());
         }
 
         PendingIntent alarmIntent;
@@ -59,17 +53,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-
-        if (BuildConfig.DEBUG) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
-        } else {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
-        }
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
 
         Log.d(TAG, "Alarm scheduled for " + UtilDate.convertDate(calendar.getTimeInMillis()));
-        if (BuildConfig.DEBUG) {
-            Toast.makeText(context, "Alarm scheduled for " + UtilDate.convertDate(calendar.getTimeInMillis()), Toast.LENGTH_SHORT).show();
-        }
     }
 
     public static Boolean isAlarmScheduled(Context context) {
@@ -88,10 +74,6 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
             Log.d(TAG, "StartUpBootReceiver BOOT_COMPLETED");
             scheduleAlarm(context);
-        }
-
-        if (BuildConfig.DEBUG) {
-            Toast.makeText(context, "New stock calculated", Toast.LENGTH_LONG).show();
         }
         createNotificationChannel(context);
         PrescriptionDatabase prescriptions = PrescriptionDatabase.getInstanceDatabase(context.getApplicationContext());

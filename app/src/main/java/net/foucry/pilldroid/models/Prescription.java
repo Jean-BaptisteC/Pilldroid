@@ -157,12 +157,6 @@ public class Prescription implements Serializable {
         Date lastUpdate = new Date(getLast_update());
 
         int numberOfDays = UtilDate.nbOfDaysBetweenDateAndToday(lastUpdate);
-
-        /*if (BuildConfig.DEBUG) {
-            numberOfDays = 1;
-            Log.d(TAG, "Set NumberOfDays = 1");
-        }*/
-
         if (numberOfDays > 0) {
             float currentStock = 0;
             float newStock = 0;

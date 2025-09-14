@@ -2,7 +2,7 @@
 apply plugin: 'com.android.application'
 
 // Try reading secrets from file
-def secretsPropertiesFile = rootProject.file("secrets.properties")
+def secretsPropertiesFile = rootProject.file('secrets.properties')
 def secretProperties = new Properties()
 
 if (secretsPropertiesFile.exists()) {
@@ -10,21 +10,21 @@ if (secretsPropertiesFile.exists()) {
 }
 // Otherwise read from environment variables, this happens in CI
 else {
-    secretProperties.setProperty("signing_keystore_password", "${System.getenv('signing_keystore_password')}")
-    secretProperties.setProperty("signing_key_password", "${System.getenv('signing_key_password')}")
-    secretProperties.setProperty("signing_key_alias", "${System.getenv('signing_key_alias')}")
+    secretProperties.setProperty("signing_keystore_password", "${System.getenv("signing_keystore_password")}")
+    secretProperties.setProperty("signing_key_password", "${System.getenv("signing_key_password")}")
+    secretProperties.setProperty("signing_key_alias", "${System.getenv("signing_key_alias")}")
 }
 
 android {
     signingConfigs {
         release {
-            storeFile rootProject.file("android-signing-keystore.jks")
+            storeFile rootProject.file('android-signing-keystore.jks')
             storePassword secretProperties['signing_keystore_password']
             keyAlias secretProperties['signing_key_alias']
             keyPassword secretProperties['signing_key_password']
         }
         prerelease {
-            storeFile file("../android-signing-keystore.jks")
+            storeFile file('../android-signing-keystore.jks')
             storePassword secretProperties['signing_keystore_password']
             keyAlias secretProperties['signing_key_alias']
             keyPassword secretProperties['signing_key_password']
@@ -33,17 +33,17 @@ android {
     compileSdk 34
 
     defaultConfig {
-        applicationId "net.foucry.pilldroid"
+        applicationId 'net.foucry.pilldroid'
 
         minSdkVersion defaultMinSdkVersion
         targetSdkVersion defaultTargetSdkVersion
         versionCode 1
-        versionName "v1"
+        versionName 'v1'
         multiDexEnabled true
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments += ["room.schemaLocation": "$projectDir/schemas".toString()]
+                arguments += ['room.schemaLocation': '$projectDir/schemas'.toString()]
             }
         }
     }
@@ -55,7 +55,7 @@ android {
         debug {
             minifyEnabled false
             debuggable true
-            applicationIdSuffix ".debug"
+            applicationIdSuffix '.debug'
         }
         release {
             minifyEnabled true
@@ -64,16 +64,16 @@ android {
             signingConfig signingConfigs.release
         }
     }
-    flavorDimensions = ["version"]
+    flavorDimensions = ['version']
     productFlavors {
         dev {
-            resValue "string", "app_name", "PillDroid dev"
-            dimension ="version"
+            resValue 'string', 'app_name', 'PillDroid dev'
+            dimension ='version'
         }
 
         product {
-            resValue "string", "app_name", "PillDroid"
-            dimension ="version"
+            resValue 'string', 'app_name', 'PillDroid'
+            dimension ='version'
         }
     }
 
@@ -86,7 +86,7 @@ android {
 
     allprojects {
         tasks.withType(JavaCompile) {
-            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+            options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
         }
     }
 }
@@ -104,11 +104,11 @@ sourceSets {
 
 dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation "androidx.room:room-common:2.6.1"
-    annotationProcessor "androidx.room:room-compiler:2.6.1"
-    implementation "androidx.room:room-testing:2.6.1"
-    implementation "androidx.room:room-rxjava3:2.6.1"
-    implementation "androidx.room:room-runtime:2.6.1"
+    implementation 'androidx.room:room-common:2.6.1'
+    annotationProcessor 'androidx.room:room-compiler:2.6.1'
+    implementation 'androidx.room:room-testing:2.6.1'
+    implementation 'androidx.room:room-rxjava3:2.6.1'
+    implementation 'androidx.room:room-runtime:2.6.1'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.13.2'

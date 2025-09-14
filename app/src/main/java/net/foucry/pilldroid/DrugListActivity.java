@@ -4,14 +4,11 @@ import static net.foucry.pilldroid.UtilDate.date2String;
 import static net.foucry.pilldroid.Utils.intRandomExclusive;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.InputType;
@@ -22,7 +19,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -34,7 +30,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -336,41 +331,19 @@ public class DrugListActivity extends AppCompatActivity {
      * @param aMedicine Prescription- medication to be added
      */
     private void askToAddInDB(Medicine aMedicine) {
-        final Dialog dlg = new Dialog(this);
-        dlg.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        Objects.requireNonNull(dlg.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dlg.setContentView(R.layout.custom_dialog_layout_one_button);
+        final MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
+        dlg.setTitle(R.string.app_name);
         dlg.setCancelable(true);
-        MaterialTextView msg = dlg.findViewById(R.id.msg);
-        String msgString;
-        MaterialTextView cpl = dlg.findViewById(R.id.cpl);
-        ShapeableImageView icon = dlg.findViewById(R.id.image);
-        MaterialButton btn = dlg.findViewById(R.id.txtClose);
-        dlg.show();
 
         if (aMedicine != null) {
-            msgString = aMedicine.getName() + " " + getString(R.string.msgFound);
-            msg.setText(msgString);
-            cpl.setText(getString(R.string.addInList));
-            icon.setImageResource(R.drawable.tickmark);
-            btn.setText(getString(R.string.yes));
-            btn.setOnClickListener(v -> {
-                // TODO Auto-generated method stub
-                dlg.dismiss();
-                finish();
+            dlg.setMessage(aMedicine.getName() + " " + getString(R.string.msgFound));
+            dlg.setPositiveButton(R.string.yes, (dialog, id) -> {
+                dialog.dismiss();
                 addDrugToList(Utils.medicine2prescription(aMedicine));
             });
         } else {
-            msgString = getString(R.string.msgNotFound);
-            msg.setText(msgString);
-            cpl.setText("");
-            icon.setImageResource(R.drawable.tickcross);
-            btn.setText(getString(R.string.button_close));
-            btn.setOnClickListener(v -> {
-                // TODO Auto-generated method stub
-                dlg.dismiss();
-                finish();
-            });
+            dlg.setMessage(R.string.msgFound);
+            dlg.setPositiveButton(R.string.button_close, (dialog, id) -> dialog.dismiss());
         }
         dlg.show();
     }

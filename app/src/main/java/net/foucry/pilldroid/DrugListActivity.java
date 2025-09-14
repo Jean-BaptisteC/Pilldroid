@@ -264,9 +264,6 @@ public class DrugListActivity extends AppCompatActivity {
             startActivity(new Intent(this, About.class));
             return true;
         } else if (id == R.id.help) {
-            PrefManager prefManager = new PrefManager(this);
-            prefManager.setFirstTimeLaunch(true);
-
             startActivity(new Intent(this, WelcomeActivity.class));
             return true;
         }

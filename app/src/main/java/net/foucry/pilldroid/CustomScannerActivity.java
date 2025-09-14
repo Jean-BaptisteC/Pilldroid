@@ -31,7 +31,7 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.custom_scanner_activty);
+        setContentView(R.layout.custom_scanner_activity);
 
         findViewById(R.id.keyboard_button).setOnClickListener(this::onKeyboard);
         findViewById(R.id.cancel_button).setOnClickListener(this::onCancel);

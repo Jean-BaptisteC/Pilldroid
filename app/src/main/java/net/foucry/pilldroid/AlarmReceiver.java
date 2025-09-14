@@ -9,12 +9,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.icu.util.Calendar;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-
-import com.google.zxing.client.android.BuildConfig;
 
 import net.foucry.pilldroid.dao.PrescriptionsDAO;
 import net.foucry.pilldroid.databases.PrescriptionDatabase;

@@ -207,8 +207,6 @@ public class DrugListActivity extends AppCompatActivity {
                                 if (returnCode == 3) {
                                     Log.d(TAG, "Keyboard Input");
                                     showInputDialog();
-                                } else if (returnCode == 2) {
-                                    Toast.makeText(this, R.string.cancelled_scan, Toast.LENGTH_LONG).show();
                                 }
                             } else {
                                 Log.d(TAG, "Scanned formatName = " + bundle.getString(BARCODE_FORMAT_NAME));

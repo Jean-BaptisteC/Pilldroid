@@ -103,12 +103,12 @@ sourceSets {
 }
 
 dependencies {
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.room:room-common:2.6.1'
-    annotationProcessor 'androidx.room:room-compiler:2.6.1'
-    implementation 'androidx.room:room-testing:2.6.1'
-    implementation 'androidx.room:room-rxjava3:2.6.1'
-    implementation 'androidx.room:room-runtime:2.6.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    implementation 'androidx.room:room-common:2.7.0'
+    annotationProcessor 'androidx.room:room-compiler:2.7.0'
+    implementation 'androidx.room:room-testing:2.7.0'
+    implementation 'androidx.room:room-rxjava3:2.7.0'
+    implementation 'androidx.room:room-runtime:2.7.0'
 
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     testImplementation 'junit:junit:4.13.2'

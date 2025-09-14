@@ -5,7 +5,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:background="@android:color/white"
+  android:background="@color/backgroundColor"
   android:orientation="vertical"
   tools:ignore="Overdraw">
 
@@ -17,9 +17,4 @@
       app:layout_collapseMode="pin"
       app:titleTextColor="@color/white"
       app:title="@string/about"/>
-
-    <WebView
-        android:id="@+id/aboutHtml"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 </LinearLayout>

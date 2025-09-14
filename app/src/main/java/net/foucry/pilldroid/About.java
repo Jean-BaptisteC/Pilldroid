@@ -1,8 +1,6 @@
 package net.foucry.pilldroid;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.webkit.WebView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,14 +13,6 @@ public class About extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about);
-
-        WebView aboutView = findViewById(R.id.aboutHtml);
-
-        aboutView.loadUrl("file:///android_asset/about.html");
-        aboutView.clearCache(true);
-        aboutView.clearHistory();
-        aboutView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
-        aboutView.setBackgroundColor(Color.WHITE);
 
     }
 }

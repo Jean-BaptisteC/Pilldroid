@@ -14,8 +14,7 @@ import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -24,7 +23,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -41,6 +39,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 import com.google.zxing.client.android.Intents;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -310,63 +309,24 @@ public class DrugListActivity extends AppCompatActivity {
      * show keyboardInput dialog
      */
     protected void showInputDialog() {
-        final Dialog dialog = new Dialog(this);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+        builder.setTitle(R.string.enter_cip_13);
+        final TextInputEditText input = new TextInputEditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        input.setHint(R.string.enter_cip_13_here);
+        builder.setView(input);
+        builder.setCancelable(true);
+        AtomicReference<String> cip13 = new AtomicReference<>(String.valueOf(input.getText()));
+        builder.setPositiveButton(R.string.button_ok, (dialog, id) -> {
+                        dialog.dismiss();
+                        cip13.set(340093 + input.getEditableText().toString());
+                        MedicinesDAO medicinesDAO = medicines.getMedicinesDAO();
+                        Medicine aMedicine = medicinesDAO.getMedicineByCIP13(String.valueOf(cip13));
+                        askToAddInDB(aMedicine);
+    });
+        builder.setNegativeButton(R.string.button_cancel,(dialog, id) -> dialog.dismiss());
 
-        dialog.setCancelable(true);
-        dialog.setCanceledOnTouchOutside(true);
-        dialog.setContentView(R.layout.input_dialog);
-
-        MaterialButton ok = dialog.findViewById(R.id.agreed);
-        MaterialButton cancel = dialog.findViewById(R.id.notagreed);
-        ok.setEnabled(false);
-        ok.setBackground(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.rounded_btn_disabled)));
-        MaterialTextView title = dialog.findViewById(R.id.title);
-        final EditText editText = dialog.findViewById(R.id.editcip13);
-        String input = "";
-        AtomicReference<String> cip13 = new AtomicReference<>(String.valueOf(editText.getText()));
-
-        // TODO change the color of ok button when the number of character is correct.
-
-        ok.setText(R.string.button_ok);
-        cancel.setText(R.string.button_cancel);
-        editText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (s.length() == 7) {
-                    ok.setEnabled(true);
-                    ok.setBackground(Objects.requireNonNull(ContextCompat.getDrawable(editText.getContext(), R.drawable.rounded_btn)));
-                }
-                else {
-                    ok.setEnabled(false);
-                    ok.setBackground(Objects.requireNonNull(ContextCompat.getDrawable(editText.getContext(), R.drawable.rounded_btn_disabled)));
-                }
-            }
-        });
-        ok.setOnClickListener(v -> {
-            dialog.cancel();
-            Log.i("EditText Value",editText.getEditableText().toString());
-            cip13.set(340093 + editText.getEditableText().toString());
-            MedicinesDAO medicinesDAO = medicines.getMedicinesDAO();
-            Medicine aMedicine = medicinesDAO.getMedicineByCIP13(String.valueOf(cip13));
-            askToAddInDB(aMedicine);
-        });
-        cancel.setOnClickListener(v -> {
-            dialog.cancel();
-            Log.i(TAG, "dismiss dialog");
-        });
-
-        dialog.show();
+        builder.show();
     }
 
     /**

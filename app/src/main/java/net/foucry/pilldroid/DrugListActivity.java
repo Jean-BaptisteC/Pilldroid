@@ -430,7 +430,6 @@ public class DrugListActivity extends AppCompatActivity {
                     int itemHeight = itemView.getBottom() - itemView.getTop();
 
                     if (dX > 0) {
-                        p.setColor(getColor(R.color.bg_screen3));
                         icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_edit);
 
                         // Draw Rect with varying right side, equal to displacement dX
@@ -445,7 +444,6 @@ public class DrugListActivity extends AppCompatActivity {
                         icon.setBounds(xMarkLeft, xMarkTop, xMarkRight, xMarkBottom);
 
                     } else {
-                        p.setColor(getColor(R.color.bg_screen4));
                         // Draw Rect with varying left side, equal to the item's right side plus negative displacement dX
                         c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
                                 (float) itemView.getRight(), (float) itemView.getBottom(), p);

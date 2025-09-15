@@ -416,7 +416,7 @@ public class DrugListActivity extends AppCompatActivity {
                     startActivityForResult(intent, CUSTOMIZED_REQUEST_CODE);
                 }
 
-                Snackbar.make(recyclerView, prescription.getName(),
+                Snackbar.make(recyclerView, getString(R.string.drug_deleted),
                         Snackbar.LENGTH_LONG).setAction(R.string.Undo, v -> {
                             prescriptionList.add(position, prescription);
                             mAdapter.notifyItemInserted(position);

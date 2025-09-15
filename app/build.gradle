@@ -94,13 +94,6 @@ android {
 repositories {
     mavenCentral()
 }
-sourceSets {
-    main {
-        java {
-            exclude 'net/foucry/pilldroid/ViewDialog.java'
-        }
-    }
-}
 
 dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'

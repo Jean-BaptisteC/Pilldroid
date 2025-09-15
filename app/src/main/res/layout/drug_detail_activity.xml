@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/list_selector"
+    android:background="@color/backgroundColor"
     android:backgroundTint="@color/cardview_shadow_start_color"
     android:fitsSystemWindows="true"
     tools:context="net.foucry.pilldroid.DrugDetailActivity"

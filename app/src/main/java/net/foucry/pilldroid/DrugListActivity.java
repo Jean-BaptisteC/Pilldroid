@@ -433,6 +433,7 @@ public class DrugListActivity extends AppCompatActivity {
                     Paint p = new Paint();
                     Drawable icon;
                     icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_trash_can);
+                    p.setColor(getColor(R.color.backgroundColor));
 
                     int xMarkMargin = (int) getApplicationContext().getResources().getDimension(R.dimen.fab_margin);
 

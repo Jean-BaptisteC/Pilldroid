@@ -65,9 +65,8 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);
-        if (prefManager.isFirstTimeLaunch()) {
-            askForComprehensive();
-        }
+        if (!prefManager.isUnderstood())
+            firstStart();
         if (!prefManager.isFirstTimeLaunch()) {
             finish();
         }
@@ -125,6 +124,10 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
+    private void firstStart(){
+            askForComprehensive();
+            prefManager.setUnderstood(true);
+    }
     private void askForComprehensive() {
         final MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
         dlg.setMessage(getString(R.string.understood));

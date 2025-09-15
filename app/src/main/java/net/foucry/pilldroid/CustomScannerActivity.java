@@ -49,12 +49,9 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
         capture = new CaptureManager(this, barcodeScannerView);
         capture.initializeFromIntent(getIntent(), savedInstanceState);
         capture.setShowMissingCameraPermissionDialog(false);
-
-        //changeMaskColor(null);
         changeLaserVisibility(true);
         barcodeScannerView.decodeSingle(result -> {
             Intent scanResult = new Intent();
-            //Bundle scanResultBundle = new Bundle();
             scanResult.putExtra("Barcode Content", result.getText());
             scanResult.putExtra("Barcode Format name", result.getBarcodeFormat().name());
             scanResult.putExtra("returnCode", captureIntentBundle.getInt("returnCode"));

@@ -1,4 +1,4 @@
-package net.foucry.pilldroid;
+package net.foucry.pilldroid.utils;
 
 import net.foucry.pilldroid.models.Medicine;
 import net.foucry.pilldroid.models.Prescription;

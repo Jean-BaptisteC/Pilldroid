@@ -1,4 +1,4 @@
-package net.foucry.pilldroid;
+package net.foucry.pilldroid.utils;
 
 import java.text.DateFormat;
 import java.text.ParsePosition;
@@ -48,7 +48,7 @@ public class UtilDate {
      * @return String of the converted date
      * Convert a date to a String using a SimpleDateFormat
      */
-    static String date2String(Date date, DateFormat dateFormat) {
+    public static String date2String(Date date, DateFormat dateFormat) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
         return dateFormat.format(calendar.getTime());
@@ -83,7 +83,7 @@ public class UtilDate {
      * @param dateInMilliseconds long
      * @return formatted Date String
      */
-    static String convertDate(long dateInMilliseconds) {
+    public static String convertDate(long dateInMilliseconds) {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yy HH:mm:ss", Locale.getDefault());
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(dateInMilliseconds);

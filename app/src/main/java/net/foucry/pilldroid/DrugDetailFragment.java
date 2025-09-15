@@ -11,6 +11,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 import net.foucry.pilldroid.models.Prescription;
+import net.foucry.pilldroid.utils.Utils;
 
 /**
  * A fragment representing a single Drug detail screen.

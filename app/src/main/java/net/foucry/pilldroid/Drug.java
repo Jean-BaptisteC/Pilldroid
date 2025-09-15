@@ -1,7 +1,7 @@
 package net.foucry.pilldroid;
 
-import static net.foucry.pilldroid.UtilDate.dateAtNoon;
-import static net.foucry.pilldroid.UtilDate.nbOfDaysBetweenDateAndToday;
+import static net.foucry.pilldroid.utils.UtilDate.dateAtNoon;
+import static net.foucry.pilldroid.utils.UtilDate.nbOfDaysBetweenDateAndToday;
 
 import java.io.Serializable;
 import java.util.Calendar;

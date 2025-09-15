@@ -19,8 +19,8 @@
     <string name="detail_view">Vue de détail</string>
     <string name="save_button">Enregistrer</string>
     <string name="flashlightButton">Allumer/Eteindre le Flash</string>
-    <string name="enter_cip_13_here">Saisir la fin du code CIP 13 ici..</string>
-    <string name="enter_cip_13">Saisir le code CIP 13</string>
+    <string name="enter_code_here">Saisir le code CIP 13, CIP 7 ou CIS ici..</string>
+    <string name="enter_code">Saisir le code CIP 13, CIP 7 ou CIS</string>
     <string name="button_close">Fermer</string>
     <string name="scan_label">Visez le code-barres pour le scanner</string>
 

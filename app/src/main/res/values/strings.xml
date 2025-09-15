@@ -18,8 +18,8 @@
     <string name="detail_view">Detail view</string>
     <string name="save_button">Save</string>
     <string name="flashlightButton">Toggle Flash</string>
-    <string name="enter_cip_13_here">Enter end of CIP 13 here..</string>
-    <string name="enter_cip_13">Enter CIP 13</string>
+    <string name="enter_code_here">Enter CIP 13, CIP 7 or CIS here..</string>
+    <string name="enter_code">Enter CIP 13, CIP 7 or CIS </string>
     <string name="channel_description" translatable="false">Pilldroid_NotificationChannel</string>
     <string name="channel_name" translatable="false">PilldroidChannel</string>
     <string name="button_close">Close</string>

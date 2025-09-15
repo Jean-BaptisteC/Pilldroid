@@ -15,6 +15,12 @@ public interface MedicinesDAO {
     @Query("SELECT * FROM drugs WHERE cip13 = :cip13")
     Medicine getMedicineByCIP13(String cip13);
 
+    @Query("SELECT * FROM drugs WHERE cip7 = :cip7")
+    Medicine getMedicineByCIP7(String cip7);
+
+    @Query("SELECT * FROM drugs WHERE cis = :cis")
+    Medicine getMedicineByCIS(String cis);
+
     @Query("SELECT count(*) FROM drugs")
     int getMedicineCount();
 }

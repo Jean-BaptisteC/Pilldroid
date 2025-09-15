@@ -292,23 +292,36 @@ public class DrugListActivity extends AppCompatActivity {
      */
     protected void showInputDialog() {
         final MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-        builder.setTitle(R.string.enter_cip_13);
+        builder.setTitle(R.string.enter_code);
         final TextInputEditText input = new TextInputEditText(this);
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
-        input.setHint(R.string.enter_cip_13_here);
+        input.setHint(R.string.enter_code_here);
         builder.setView(input);
         builder.setCancelable(true);
-        AtomicReference<String> cip13 = new AtomicReference<>(String.valueOf(input.getText()));
+        AtomicReference<String> value = new AtomicReference<>(String.valueOf(input.getText()));
         builder.setPositiveButton(R.string.button_ok, (dialog, id) -> {
                         dialog.dismiss();
-                        cip13.set(340093 + input.getEditableText().toString());
-                        MedicinesDAO medicinesDAO = medicines.getMedicinesDAO();
-                        Medicine aMedicine = medicinesDAO.getMedicineByCIP13(String.valueOf(cip13));
-                        askToAddInDB(aMedicine);
+                        value.set(input.getEditableText().toString());
+                        detectCode(String.valueOf(value));
     });
         builder.setNegativeButton(R.string.button_cancel,(dialog, id) -> dialog.dismiss());
 
         builder.show();
+    }
+
+    public void detectCode(String value) {
+        MedicinesDAO medicinesDAO = medicines.getMedicinesDAO();
+        Medicine aMedicine = null;
+        if(value.length() == Constants.CIP13){
+            aMedicine = medicinesDAO.getMedicineByCIP13(value);
+            }
+        else if(value.length() == Constants.CIS){
+            aMedicine = medicinesDAO.getMedicineByCIS(value);
+        }
+        else if (value.length() == Constants.CIP7) {
+            aMedicine = medicinesDAO.getMedicineByCIP7(value);
+        }
+        askToAddInDB(aMedicine);
     }
 
     /**
@@ -319,7 +332,6 @@ public class DrugListActivity extends AppCompatActivity {
      */
     private void askToAddInDB(Medicine aMedicine) {
         final MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
-        dlg.setTitle(R.string.app_name);
         dlg.setCancelable(true);
 
         if (aMedicine != null) {
@@ -329,7 +341,7 @@ public class DrugListActivity extends AppCompatActivity {
                 addDrugToList(Utils.medicine2prescription(aMedicine));
             });
         } else {
-            dlg.setMessage(R.string.msgFound);
+            dlg.setMessage(R.string.msgNotFound);
             dlg.setPositiveButton(R.string.button_close, (dialog, id) -> dialog.dismiss());
         }
         dlg.show();

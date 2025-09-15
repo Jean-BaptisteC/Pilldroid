@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import net.foucry.pilldroid.UtilDate;
+import net.foucry.pilldroid.utils.UtilDate;
 
 import java.io.Serializable;
 import java.util.Calendar;

@@ -47,7 +47,6 @@
         app:backgroundTint="@android:color/transparent"
         android:contentDescription="@string/button_cancel"
         android:cropToPadding="false"
-        app:background="@android:color/darker_gray"
         app:srcCompat="@drawable/ic_cancel" />
 
     <ImageButton

@@ -24,7 +24,7 @@
         android:text="@string/slide8_Pilldroid"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textStyle="bold" />
 </LinearLayout>
 

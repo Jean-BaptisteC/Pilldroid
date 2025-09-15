@@ -23,13 +23,13 @@
         android:text="@string/slide2_Pilldroid"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:paddingStart="@dimen/desc_padding"
         android:paddingEnd="@dimen/desc_padding"
         android:text="@string/slide2_desc"

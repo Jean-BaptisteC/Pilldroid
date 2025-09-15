@@ -12,7 +12,8 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:contentDescription="@string/unhappy_face"
-        app:srcCompat="@drawable/ic_sentiment_dissatisfied" />
+        app:srcCompat="@drawable/ic_sentiment_dissatisfied"
+        app:tint="@color/colorPrimary"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="349dp"
@@ -22,6 +23,6 @@
         android:text="@string/slide7_Pilldroid"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textStyle="bold" />
 </LinearLayout>

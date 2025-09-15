@@ -12,20 +12,21 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:contentDescription="@string/qr_code_icon"
-        app:srcCompat="@drawable/ic_qr_code" />
+        app:srcCompat="@drawable/ic_qr_code"
+        app:tint="@color/colorPrimary"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/slide4_Pilldroid"
         android:textColor="@android:color/black"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
-        android:layout_height="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingStart="@dimen/desc_padding"
         android:paddingEnd="@dimen/desc_padding"
         android:text="@string/slide4_desc"

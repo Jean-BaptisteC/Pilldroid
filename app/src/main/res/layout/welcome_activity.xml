@@ -10,7 +10,7 @@
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_screen1" />
+        android:background="@color/backgroundColor" />
 
     <LinearLayout
         android:id="@+id/layoutDots"
@@ -30,8 +30,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/button_margin_bottom"
         android:background="@null"
-        android:text="@string/next"
-        android:textColor="@android:color/white" />
+        android:text="@string/next" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_skip"
@@ -42,6 +41,5 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="@dimen/button_margin_bottom"
         android:background="@null"
-        android:text="@string/skip"
-        android:textColor="@android:color/white" />
+        android:text="@string/skip" />
 </RelativeLayout>

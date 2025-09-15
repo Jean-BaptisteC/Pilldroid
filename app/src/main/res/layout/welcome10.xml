@@ -13,23 +13,24 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:contentDescription="@string/suspended_treatment_icon"
-        app:srcCompat="@drawable/ic_suspended_pill" />
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_suspended_pill"
+        app:tint="@color/colorPrimary"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingStart="@dimen/title_padding"
-        android:paddingEnd="@dimen/title_padding"
+        android:padding="10dp"
         android:text="@string/slide10_Pilldroid"
         android:textAlignment="center"
         android:textColor="@android:color/black"
-        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:paddingStart="@dimen/desc_padding"
         android:paddingEnd="@dimen/desc_padding"
         android:text="@string/slide10_desc"

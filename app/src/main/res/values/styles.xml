@@ -8,6 +8,8 @@
         <item name="backgroundTint">@color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="popupMenuBackground">@color/white</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
     </style>
 
     <style name="BaseTheme.NoActionBar">
@@ -18,14 +20,5 @@
     <style name="BaseTheme.AppBarOverlay" parent="ThemeOverlay.Material3.Dark.ActionBar" />
 
     <style name="BaseTheme.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
-
-    <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <!--buttons color-->
-        <item name="colorAccent">@color/material_dynamic_neutral20</item>
-        <!--title and message color-->
-        <item name="android:textColorPrimary">@android:color/white</item>
-        <!--dialog background-->
-        <item name="android:windowBackground">@drawable/background_dialog</item>
-    </style>
 
 </resources>

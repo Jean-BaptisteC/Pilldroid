@@ -4,4 +4,6 @@
     <color name="colorSecondary">#bac3ff</color>
     <color name="colorTertiary">#e6bad7</color>
     <color name="backgroundColor">#121318</color>
+    <color name="primaryContainer">#394379</color>
+    <color name="onPrimaryContainer">#dee0ff</color>
 </resources>

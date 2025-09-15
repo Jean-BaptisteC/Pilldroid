@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
+    <style name="BaseTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,16 +9,17 @@
         <item name="backgroundTint">@color/white</item>
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="popupMenuBackground">@color/white</item>
+        <item name="tint">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="BaseTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.Material3.Dark.ActionBar" />
+    <style name="BaseTheme.AppBarOverlay" parent="ThemeOverlay.Material3.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
+    <style name="BaseTheme.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 
     <style name="MyDialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
         <!--buttons color-->

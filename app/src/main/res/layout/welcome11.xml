@@ -5,7 +5,7 @@
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_centerInParent="true"
-  android:background="@color/bg_screen3"
+  android:background="@color/backgroundColor"
   android:gravity="center"
   android:orientation="vertical">
 
@@ -22,8 +22,8 @@
         android:paddingEnd="@dimen/title_padding"
         android:text="@string/slide11_Pilldroid"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_title"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -34,6 +34,6 @@
         android:paddingEnd="@dimen/desc_padding"
         android:text="@string/slide11_desc"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/slide_desc" />
 </LinearLayout>

@@ -26,12 +26,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
+        android:theme="@style/BaseTheme"
         android:allowBackup="true"
         tools:ignore="DiscouragedApi">
         <activity
             android:name=".DrugListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/BaseTheme.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,7 @@
             android:label="@string/title_drug_detail"
             android:parentActivityName=".DrugListActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/BaseTheme.NoActionBar"
             android:windowSoftInputMode="adjustResize">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,7 +54,7 @@
             android:label="Welcome"
             android:parentActivityName=".DrugListActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/BaseTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="net.foucry.pilldroid.DrugListActivity" />
@@ -64,7 +64,7 @@
             android:label="À propos de PillDroid"
             android:parentActivityName=".DrugListActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/BaseTheme" />
         <activity android:name=".CustomScannerActivity" />
         <receiver android:name="net.foucry.pilldroid.AlarmReceiver"
             android:exported="false">

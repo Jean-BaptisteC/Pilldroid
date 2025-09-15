@@ -5,7 +5,7 @@
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_centerInParent="true"
-  android:background="@color/bg_screen2"
+  android:background="@color/backgroundColor"
   android:gravity="center"
   android:orientation="vertical">
 
@@ -13,7 +13,8 @@
         android:layout_width="@dimen/img_width_height"
         android:layout_height="@dimen/img_width_height"
         android:contentDescription="@string/the_plus_icon"
-        android:src="@drawable/ic_add" />
+        android:src="@drawable/ic_add"
+        android:tint="@color/colorPrimary"/>
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,8 +22,8 @@
         android:paddingEnd="@dimen/title_padding"
         android:text="@string/slide2_Pilldroid"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_title"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -33,7 +34,7 @@
         android:paddingEnd="@dimen/desc_padding"
         android:text="@string/slide2_desc"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_desc" />
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
 
 </LinearLayout>

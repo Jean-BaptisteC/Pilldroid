@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:app="http://schemas.android.com/apk/res-auto"
-  android:background="@color/bg_screen4"
+  android:background="@color/backgroundColor"
   android:gravity="center"
   android:orientation="vertical">
 
@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/slide4_Pilldroid"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_title"
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.Material3.HeadlineMedium"
         android:textStyle="bold" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -30,7 +30,8 @@
         android:paddingEnd="@dimen/desc_padding"
         android:text="@string/slide4_desc"
         android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="@dimen/slide_desc" />
+        android:textColor="@android:color/black"
+        android:textAppearance="@style/TextAppearance.Material3.BodyLarge" />
+
 
 </LinearLayout>

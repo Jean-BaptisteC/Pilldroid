@@ -95,8 +95,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome8,
                 R.layout.welcome9,
                 R.layout.welcome10,
-                R.layout.welcome11,
-                R.layout.welcome12};
+                R.layout.welcome11};
 
         // adding bottom dots
         addBottomDots(0);

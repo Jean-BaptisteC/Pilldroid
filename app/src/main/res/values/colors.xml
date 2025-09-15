@@ -4,11 +4,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#8C8FAA</color>
     <color name="colorSecondary">#8C8FAA</color>
-    <color name="colorSecondaryDark">#bac3ff</color>
     <color name="colorTertiary">#B183A4</color>
-    <color name="colorTertiaryDark">#e6bad7</color>
     <color name="backgroundColor">#dbd9e0</color>
-    <color name="backgroundColorDark">#121318</color>
     <color name="white">#FFFFFF</color>
 
     <!-- slide bg -->

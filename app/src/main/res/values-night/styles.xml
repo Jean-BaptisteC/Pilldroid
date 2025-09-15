@@ -1,0 +1,7 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="BaseTheme.Dark" parent="BaseTheme">
+    </style>
+
+</resources>

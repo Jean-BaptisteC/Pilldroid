@@ -3,7 +3,6 @@ package net.foucry.pilldroid;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
@@ -61,7 +60,6 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
             scanResult.putExtra("returnCode", captureIntentBundle.getInt("returnCode"));
             scanResult.putExtra("resultCode", 1);
             CustomScannerActivity.this.setResult(RESULT_OK, scanResult);
-            Log.d(TAG, "scanResult == " + scanResult);
             finish();
         });
     }
@@ -112,7 +110,6 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
     }
 
     public void switchFlashlight(View view) {
-        Log.d(TAG, "Switch torch");
         if (switchFlashlightButton.isActivated()) {
             barcodeScannerView.setTorchOff();
             switchFlashlightButton.setActivated(false);
@@ -127,12 +124,10 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
     }
 
     public void onTorchOn() {
-        Log.d(TAG, "TorchON");
         switchFlashlightButton.setActivated(true);
     }
 
     public void onTorchOff() {
-        Log.d(TAG, "TorchOFF");
         switchFlashlightButton.setActivated(false);
     }
 
@@ -142,7 +137,6 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
     }
 
     public void onKeyboard(View view) {
-        Log.d(TAG, "onkeyboard");
         Intent resultIntent = new Intent();
         resultIntent.putExtra("returnCode", 3);
         CustomScannerActivity.this.setResult(RESULT_OK, resultIntent);
@@ -150,7 +144,6 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
     }
 
     public void onCancel(View view) {
-        Log.d(TAG, "onCancel");
         Intent resultIntent = new Intent();
         resultIntent.putExtra("returnCode", 2);
         CustomScannerActivity.this.setResult(RESULT_OK, resultIntent);

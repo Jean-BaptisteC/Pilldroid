@@ -2,7 +2,6 @@ package net.foucry.pilldroid;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import androidx.activity.result.contract.ActivityResultContract;
 import androidx.annotation.NonNull;
@@ -19,13 +18,8 @@ public class PilldroidScanContract extends ActivityResultContract<ScanOptions, S
     @NonNull
     @Override
     public Intent createIntent(@NonNull Context context, ScanOptions input) {
-        Log.d(TAG, "create Intent");
-
         Intent intent = new Intent(context, CustomScannerActivity.class);
-
         intent.setAction(Intents.Scan.ACTION);
-
-        Log.d(TAG, "intent ==" + intent);
         return (intent);
     }
 

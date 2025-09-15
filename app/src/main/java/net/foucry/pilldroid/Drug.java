@@ -3,8 +3,6 @@ package net.foucry.pilldroid;
 import static net.foucry.pilldroid.UtilDate.dateAtNoon;
 import static net.foucry.pilldroid.UtilDate.nbOfDaysBetweenDateAndToday;
 
-import android.util.Log;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
@@ -165,8 +163,6 @@ public class Drug implements Serializable {
     }
 
     void newStock() {
-        Log.d(TAG, "current drug = " + this);
-
         Date lastUpdate = new Date(getDateLastUpdate());
 
         int numberOfDays = nbOfDaysBetweenDateAndToday(lastUpdate);

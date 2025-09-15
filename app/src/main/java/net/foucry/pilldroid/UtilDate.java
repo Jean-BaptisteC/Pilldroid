@@ -1,7 +1,5 @@
 package net.foucry.pilldroid;
 
-import android.util.Log;
-
 import java.text.DateFormat;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
@@ -22,18 +20,12 @@ public class UtilDate {
      * set date time at Noon
      */
     public static Date dateAtNoon(Date aDate) {
-
-        Log.d(TAG, "dateAtNoon " + aDate);
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(aDate);
         calendar.set(Calendar.HOUR_OF_DAY, 12);
         calendar.set(Calendar.MINUTE, 0);
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
-
-        Log.d(TAG, "dateAtNoon " + calendar.getTime());
-
         return calendar.getTime();
     }
 
@@ -57,12 +49,8 @@ public class UtilDate {
      * Convert a date to a String using a SimpleDateFormat
      */
     static String date2String(Date date, DateFormat dateFormat) {
-
-        Log.d(TAG, "date == " + date);
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-
         return dateFormat.format(calendar.getTime());
     }
 

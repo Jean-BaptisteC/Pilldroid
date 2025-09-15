@@ -63,13 +63,10 @@ public class AlarmReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // Show the toast  like in above screen shot
-        Log.d(TAG, "onReceive");
-
         // If BOOT_COMPLETED is received we launch an alarm in 10 second in order to
         // start the alarmschedule process.
 
         if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
-            Log.d(TAG, "StartUpBootReceiver BOOT_COMPLETED");
             scheduleAlarm(context);
         }
         createNotificationChannel(context);
@@ -96,7 +93,6 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if (firstPrescription != null) {
             if (firstPrescription.getTake() != 0) {
-                if (firstPrescription.getStock() <= firstPrescription.getAlertThreshold()) {
                     notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
                     Intent notificationIntent = new Intent(context, DrugListActivity.class);
@@ -117,17 +113,11 @@ public class AlarmReceiver extends BroadcastReceiver {
                     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                     int notificationId = 666;
                     notificationManager.notify(notificationId, builder.build());
-                } else {
-                    double dummy = (firstPrescription.getStock() - firstPrescription.getAlertThreshold());
-                    Log.d(TAG, "no notification scheduled " + dummy);
-                }
             }
         }
     }
 
     private void createNotificationChannel(Context context) {
-        Log.d(TAG, "start create notification channel");
-
         CharSequence name = context.getString(R.string.channel_name);
         String description = context.getString(R.string.channel_description);
         int importance = NotificationManager.IMPORTANCE_DEFAULT;

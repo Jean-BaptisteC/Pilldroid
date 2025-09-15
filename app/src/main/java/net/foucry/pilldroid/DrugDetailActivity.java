@@ -37,8 +37,6 @@ public class DrugDetailActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         assert bundle != null;
         aPrescription = (Prescription) bundle.get("prescription");
-        Log.d(TAG, "aPrescription == " + aPrescription);
-
         setContentView(R.layout.drug_detail_activity);
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
 
@@ -48,8 +46,6 @@ public class DrugDetailActivity extends AppCompatActivity {
 
         ExtendedFloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> {
-            Log.d(TAG, "Click on save icon");
-
             getDrugChanges();
             setResult(1);
             finish();
@@ -102,8 +98,6 @@ public class DrugDetailActivity extends AppCompatActivity {
     }
 
     private void getDrugChanges() {
-        Log.d(TAG, "Time to save new values");
-
         PrescriptionDatabase prescriptions = PrescriptionDatabase.getInstanceDatabase(this);
         PrescriptionsDAO prescriptionsDAO = prescriptions.getPrescriptionsDAO();
 
@@ -137,10 +131,7 @@ public class DrugDetailActivity extends AppCompatActivity {
         newPrescription.setAlert(Integer.parseInt(alertValue));
         newPrescription.getDateEndOfStock();
 
-        if (aPrescription.equals(newPrescription)) {
-            Log.d(TAG, "medic and newPrescription are Equals");
-        } else {
-            Log.d(TAG, "medic and newPrescription are NOT Equals");
+        if (!aPrescription.equals(newPrescription)) {
             newPrescription.setLast_update(new Date().getTime());
             prescriptionsDAO.update(newPrescription);
         }

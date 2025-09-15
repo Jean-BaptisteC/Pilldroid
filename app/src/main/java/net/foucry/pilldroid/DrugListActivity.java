@@ -113,7 +113,6 @@ public class DrugListActivity extends AppCompatActivity {
             dbHelper.dropDrug();
         }
         // remove old notification
-        Log.d(TAG, "Remove old notification and old job");
         NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (nm != null) {
             nm.cancelAll();
@@ -128,8 +127,6 @@ public class DrugListActivity extends AppCompatActivity {
 
     public void onPause() {
         super.onPause();
-        Log.d(TAG, "onPause");
-
         if (!AlarmReceiver.isAlarmScheduled(this)) {
             AlarmReceiver.scheduleAlarm(this);
         }
@@ -184,8 +181,6 @@ public class DrugListActivity extends AppCompatActivity {
                     prescriptionsDAO.insert(prescription);
                 }
                 List<Prescription> prescriptions = prescriptionsDAO.getAllMedics();
-                System.out.println(prescriptions);
-                Log.d(TAG, "prescriptions ==" + prescriptions);
             }
         }
 
@@ -195,7 +190,6 @@ public class DrugListActivity extends AppCompatActivity {
                         Intent originalIntent = result.getOriginalIntent();
                         Bundle bundle = originalIntent.getExtras();
                         if (originalIntent.hasExtra(Intents.Scan.MISSING_CAMERA_PERMISSION)) {
-                            Log.d(TAG, "Missing camera permission");
                             Toast.makeText(this, R.string.missing_camera_permission, Toast.LENGTH_LONG).show();
                         } else {
                             assert bundle != null;
@@ -205,7 +199,6 @@ public class DrugListActivity extends AppCompatActivity {
 
                             if (resultCode != 1) {
                                 if (returnCode == 3) {
-                                    Log.d(TAG, "Keyboard Input");
                                     showInputDialog();
                                 }
                             } else {
@@ -282,7 +275,6 @@ public class DrugListActivity extends AppCompatActivity {
 
     // Launch scan
     public void onButtonClick() {
-        Log.d(TAG, "add medication");
         ScanOptions options = new ScanOptions();
         options.setDesiredBarcodeFormats(ScanOptions.DATA_MATRIX, ScanOptions.CODE_128);
         options.setCameraId(0);  // Use a specific camera of the device
@@ -292,8 +284,6 @@ public class DrugListActivity extends AppCompatActivity {
         options.setCaptureActivity(CustomScannerActivity.class);
         options.addExtra(Intents.Scan.SCAN_TYPE, Intents.Scan.MIXED_SCAN);
         options.addExtra(Intents.Scan.SCAN_TYPE, Intents.Scan.INVERTED_SCAN);
-
-        Log.d(TAG, "scanOptions == " + options);
         mBarcodeScannerLauncher.launch(options);
     }
 
@@ -370,8 +360,6 @@ public class DrugListActivity extends AppCompatActivity {
     private void addDrugToList(Prescription aPrescription) {
         aPrescription.getDateEndOfStock();
         mAdapter.addItem(aPrescription);
-
-        Log.d(TAG, "Call DrugDetailActivity");
         Context context = this;
         Intent intent = new Intent(context, DrugDetailActivity.class);
         intent.putExtra("prescription", aPrescription);
@@ -517,13 +505,6 @@ public class DrugListActivity extends AppCompatActivity {
             final int position = holder.getBindingAdapterPosition();
             SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE d MMMM yyyy", Locale.getDefault());
             String dateEndOfStock = date2String(mValues.get(position).getDateEndOfStock(), dateFormat);
-
-            Log.d(TAG, "Drug name == " + mValues.get(position).getName());
-            Log.d(TAG, "dateEndOfStock == " + dateEndOfStock);
-            Log.d(TAG, "stock == " + mValues.get(position).getStock());
-            Log.d(TAG, "take == " + mValues.get(position).getTake());
-            Log.d(TAG, "warn == " + mValues.get(position).getWarnThreshold());
-            Log.d(TAG, "alert == " + mValues.get(position).getAlertThreshold());
 
             holder.mItem = mValues.get(position);
             holder.mContentView.setText(mValues.get(position).getName());

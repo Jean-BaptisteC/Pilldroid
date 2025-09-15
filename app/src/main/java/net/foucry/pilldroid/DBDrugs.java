@@ -2,10 +2,8 @@ package net.foucry.pilldroid;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -82,7 +80,6 @@ class DBDrugs extends SQLiteOpenHelper {
     }
 
     private void copyDatabase(String dbPath) {
-        Log.d(TAG, "try to copy database");
         try {
             InputStream assetDB = myContext.getAssets().open(dbName);
             OutputStream appDB = new FileOutputStream(dbPath, false);
@@ -114,7 +111,6 @@ class DBDrugs extends SQLiteOpenHelper {
      * @return return a drug object
      */
     Drug getDrugByCIP13(String cip13) {
-        Log.d(TAG, "CIP13 - " + cip13);
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -146,10 +142,6 @@ class DBDrugs extends SQLiteOpenHelper {
             drug.setTake(0);
             drug.setWarnThreshold(14);
             drug.setAlertThreshold(7);
-
-            // Log
-            Log.d(TAG, "getDrug(" + cip13 + ")" + drug);
-
             // Return drug
 
             cursor.close();
@@ -164,11 +156,7 @@ class DBDrugs extends SQLiteOpenHelper {
 
         try {
             Cursor c = this.getReadableDatabase().rawQuery("SELECT cip13 FROM " + TABLE_NAME + " where cip7 = " + cip7, null);
-
-            Log.d(TAG, "Cursor == " + DatabaseUtils.dumpCursorToString(c));
-
             c.moveToFirst();
-
             if (c.getCount() > 0) {
                 cip13 = c.getString(0);
             }
@@ -180,7 +168,6 @@ class DBDrugs extends SQLiteOpenHelper {
     }
 
     Drug getDrugByCIP7(String cip7) {
-        Log.d(TAG, "CIP7 - " + cip7);
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -212,10 +199,6 @@ class DBDrugs extends SQLiteOpenHelper {
             drug.setTake(0);
             drug.setWarnThreshold(14);
             drug.setAlertThreshold(7);
-
-            // Log
-            Log.d(TAG, "getDrug(" + cip7 + ")" + drug);
-
             // Return drug
 
             cursor.close();

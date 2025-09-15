@@ -9,7 +9,7 @@ import android.content.SharedPreferences;
  */
 public class PrefManager {
     // Shared preferences file name
-    private static final String PREF_NAME = "Pildroid-Prefs";
+    private static final String PREF_NAME = "App_Prefs";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String DATABASE_VERSION = "DatabaseVersion";
     private static final String IS_UNDERSTOOD = "IsUnderStood";

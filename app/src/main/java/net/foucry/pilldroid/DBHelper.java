@@ -3,11 +3,9 @@ package net.foucry.pilldroid;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.text.format.DateUtils;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +73,6 @@ class DBHelper extends SQLiteOpenHelper {
      */
     void dropDrug() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Log.d(TAG, "Drop drug table");
         db.execSQL("DROP TABLE IF EXISTS drug");
 
         this.onCreate(db);
@@ -87,9 +84,6 @@ class DBHelper extends SQLiteOpenHelper {
      * @param drug the drug object to be saved
      */
     void addDrug(Drug drug) {
-        // Logging
-        Log.d(TAG, drug.toString());
-
         // Get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -136,9 +130,6 @@ class DBHelper extends SQLiteOpenHelper {
                 null,                                    // having
                 null,                                   // order by
                 null);                                     // limits
-
-        Log.d(TAG, "Cursor == " + DatabaseUtils.dumpCursorToString(cursor));
-
         // if case we got result, go to the first one
         Drug drug = new Drug();
         if (cursor != null) {
@@ -157,8 +148,6 @@ class DBHelper extends SQLiteOpenHelper {
             drug.setAlertThreshold(Integer.parseInt(cursor.getString(9)));
             drug.setDateLastUpdate(Long.parseLong(cursor.getString(10)));
         }
-        // Log
-        Log.d(TAG, "getDrug(" + id + ")" + drug);
 
         assert cursor != null;
         cursor.close();
@@ -207,9 +196,6 @@ class DBHelper extends SQLiteOpenHelper {
 
         assert cursor != null;
         cursor.close();
-
-        Log.d(TAG, "getDrug(" + cip13 + ")" + drug);
-
         return drug;
     }
 
@@ -225,9 +211,6 @@ class DBHelper extends SQLiteOpenHelper {
         // Get reference to readable DB
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(query, null);
-
-        Log.d(TAG, "Cursor == " + DatabaseUtils.dumpCursorToString(cursor));
-
         // For Each row, build a drug and add it to the list
         Drug drug;
         if (cursor.moveToFirst()) {
@@ -265,18 +248,12 @@ class DBHelper extends SQLiteOpenHelper {
                 updateDrug(currentDrug);
             }
         }
-
-
-        Log.d(TAG, "Before sort == " + drugs);
-
         drugs.sort((lhs, rhs) -> {
             if (lhs.getDateEndOfStock().compareTo(rhs.getDateEndOfStock()) != 0)
                 return lhs.getDateEndOfStock().compareTo(rhs.getDateEndOfStock());
             else
                 return (int) (lhs.getStock() - rhs.getStock());
         });
-        Log.d(TAG, "After sort " + drugs);
-
         // Move drug with prise = 0 at the end of the list
         // todo: If some drug moved, must redo all the loop
         int position = 0;
@@ -297,10 +274,6 @@ class DBHelper extends SQLiteOpenHelper {
      * @param drug object to be updated in DB
      */
     public void updateDrug(Drug drug) {
-
-        Log.d(TAG, "Update Drug == " + drug.toString());
-        Log.d(TAG, "drug last_update == " + UtilDate.convertDate(drug.getDateLastUpdate()));
-
         // Get reference to writable DB
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -326,9 +299,7 @@ class DBHelper extends SQLiteOpenHelper {
                 selectionArgs);
 
         // Close DB
-        db.close();
-        Log.d(TAG, "values == " + values);
-    }
+        db.close();}
 
     /**
      * Delete a drug object in database
@@ -346,9 +317,6 @@ class DBHelper extends SQLiteOpenHelper {
 
         // Close DB
         db.close();
-
-        // log
-        Log.d(TAG, "delete drug " + drug);
     }
 
     /**

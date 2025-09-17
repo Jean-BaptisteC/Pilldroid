@@ -273,6 +273,7 @@ public class DrugListActivity extends AppCompatActivity {
         final TextInputEditText input = new TextInputEditText(this);
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
         input.setHint(R.string.enter_code_here);
+        input.setPadding(40,30,40,30);
         builder.setView(input);
         builder.setCancelable(true);
         AtomicReference<String> value = new AtomicReference<>(String.valueOf(input.getText()));

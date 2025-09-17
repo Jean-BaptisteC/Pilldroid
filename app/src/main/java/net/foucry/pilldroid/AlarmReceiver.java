@@ -1,8 +1,5 @@
 package net.foucry.pilldroid;
 
-import static android.Manifest.permission.POST_NOTIFICATIONS;
-import static android.content.pm.PackageManager.PERMISSION_GRANTED;
-
 import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -15,7 +12,6 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -58,15 +54,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-            if (alarmManager.canScheduleExactAlarms()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S  && alarmManager.canScheduleExactAlarms()) {
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
             } else {
                 Toast.makeText(context, R.string.permission_denied, Toast.LENGTH_SHORT).show();
             }
-        } else {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
-        }
 
         Log.d(TAG, "Alarm scheduled for " + UtilDate.convertDate(calendar.getTimeInMillis()));
     }
@@ -129,7 +121,7 @@ public class AlarmReceiver extends BroadcastReceiver {
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                 int notificationId = 666;
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                        && ActivityCompat.checkSelfPermission(context, POST_NOTIFICATIONS) != PERMISSION_GRANTED) {
+                        && notificationManager.areNotificationsEnabled()) {
                     notificationManager.notify(notificationId, builder.build());
                 } else {
                     Toast.makeText(context, R.string.permission_denied, Toast.LENGTH_SHORT).show();

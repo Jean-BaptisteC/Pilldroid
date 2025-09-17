@@ -1,9 +1,15 @@
 package net.foucry.pilldroid;
 
+import static android.Manifest.permission.POST_NOTIFICATIONS;
+import static android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM;
+
+import static net.foucry.pilldroid.utils.Constants.build;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +19,23 @@ import android.view.WindowInsetsController;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
+    private static final String TAG = WelcomeActivity.class.getName();
+
+    private ActivityResultLauncher<String> requestNotificationPermission;
     private ViewPager viewPager;
     private LinearLayout dotsLayout;
     private int[] layouts;
@@ -65,8 +77,10 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);
-        if (!prefManager.isUnderstood())
+        requestNotificationPermission = registerForActivityResult(new ActivityResultContracts.RequestPermission(), this::storeNotificationPermissionResult);
+        if (!prefManager.isUnderstood()) {
             firstStart();
+        }
         if (!prefManager.isFirstTimeLaunch()) {
             finish();
         }
@@ -123,10 +137,17 @@ public class WelcomeActivity extends AppCompatActivity {
         });
     }
 
-    private void firstStart(){
-            askForComprehensive();
-            prefManager.setUnderstood(true);
+    private void firstStart() {
+        askForComprehensive();
+        prefManager.setUnderstood(true);
+        if (build >= Build.VERSION_CODES.TIRAMISU) {
+            requestNotificationPermission.launch(POST_NOTIFICATIONS);
+        }
+        if (build >= Build.VERSION_CODES.S) {
+            getApplicationContext().startActivity(new Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+        }
     }
+
     private void askForComprehensive() {
         final MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
         dlg.setMessage(getString(R.string.understood));
@@ -225,5 +246,12 @@ public class WelcomeActivity extends AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+
+    private void storeNotificationPermissionResult(boolean value) {
+        if (value)
+            Log.i(TAG, "Permission granted");
+        else
+            Log.w(TAG, "Permission refused");
     }
 }

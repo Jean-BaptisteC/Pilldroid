@@ -18,6 +18,7 @@ import androidx.core.app.NotificationManagerCompat;
 import net.foucry.pilldroid.dao.PrescriptionsDAO;
 import net.foucry.pilldroid.databases.PrescriptionDatabase;
 import net.foucry.pilldroid.models.Prescription;
+import net.foucry.pilldroid.utils.Constants;
 import net.foucry.pilldroid.utils.UtilDate;
 import net.foucry.pilldroid.utils.Utils;
 
@@ -54,11 +55,11 @@ public class AlarmReceiver extends BroadcastReceiver {
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S  && alarmManager.canScheduleExactAlarms()) {
-                alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
-            } else {
-                Toast.makeText(context, R.string.permission_denied, Toast.LENGTH_SHORT).show();
-            }
+        if (Constants.build >= Build.VERSION_CODES.S && alarmManager.canScheduleExactAlarms()) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
+        } else {
+            Toast.makeText(context, R.string.permission_denied, Toast.LENGTH_SHORT).show();
+        }
 
         Log.d(TAG, "Alarm scheduled for " + UtilDate.convertDate(calendar.getTimeInMillis()));
     }
@@ -120,11 +121,11 @@ public class AlarmReceiver extends BroadcastReceiver {
 
                 NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                 int notificationId = 666;
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                if (Constants.build >= Build.VERSION_CODES.TIRAMISU
                         && notificationManager.areNotificationsEnabled()) {
                     notificationManager.notify(notificationId, builder.build());
                 } else {
-                    Toast.makeText(context, R.string.permission_denied, Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, "Permission refused");
                 }
             }
         }

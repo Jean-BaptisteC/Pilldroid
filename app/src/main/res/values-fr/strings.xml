@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="title_drug_detail">Détail Médicament</string>
-    <string name="button_cancel">Annuler</string>
-    <string name="button_ok">OK</string>
+    <string name="cancel">Annuler</string>
+    <string name="ok">Ok</string>
     <string name="drug_presentation_label">Contenu de la boite</string>
     <string name="drug_name_label">Nom</string>
     <string name="drug_administrationMode_label">Mode d\'administration</string>
@@ -17,11 +17,11 @@
     <string name="notification_text">Vous devez passer à la pharmacie</string>
     <string name="button_keyboard">Utilisez le clavier</string>
     <string name="detail_view">Vue de détail</string>
-    <string name="save_button">Enregistrer</string>
+    <string name="save">Enregistrer</string>
     <string name="flashlightButton">Allumer/Eteindre le Flash</string>
     <string name="enter_code_here">Saisir le code CIP 13, CIP 7 ou CIS ici..</string>
     <string name="enter_code">Saisir le code CIP 13, CIP 7 ou CIS</string>
-    <string name="button_close">Fermer</string>
+    <string name="close">Fermer</string>
     <string name="scan_label">Visez le code-barres pour le scanner</string>
 
     <!-- Slide Strings -->
@@ -71,9 +71,9 @@
     <string name="yes">Oui</string>
     <string name="no">Non</string>
     <string name="Yes_understood">Oui, j\'ai compris</string>
-    <string name="understood">Je comprends que le développeur de Pilldroid n\'est pas responsable de la gestion de vos médicaments. CELA RELÈVE DE VOTRE SEULE RESPONSABILITÉ.</string>
+    <string name="understood">Je comprends que le développeur de Pilldroid n\'est pas responsable de la gestion de vos médicaments.\n Cela relève de votre seule responsabilité.</string>
     <string name="Undo">Annuler</string>
     <string name="trash_icon">Icône de poubelle</string>
-    <string name="addInList">Ajouter à votre liste de médicament</string>
+    <string name="addInList">Ajouter à votre liste de médicament ?</string>
     <string name="drug_deleted">Médicament supprimé</string>
 </resources>

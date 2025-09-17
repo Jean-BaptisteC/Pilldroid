@@ -10,6 +10,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -274,15 +275,17 @@ public class DrugListActivity extends AppCompatActivity {
         input.setInputType(InputType.TYPE_CLASS_NUMBER);
         input.setHint(R.string.enter_code_here);
         input.setPadding(40,30,40,30);
+        int maxLength = 13;
+        input.setFilters(new InputFilter[] {new InputFilter.LengthFilter(maxLength)});
         builder.setView(input);
         builder.setCancelable(true);
         AtomicReference<String> value = new AtomicReference<>(String.valueOf(input.getText()));
-        builder.setPositiveButton(R.string.button_ok, (dialog, id) -> {
+        builder.setPositiveButton(R.string.ok, (dialog, id) -> {
                         dialog.dismiss();
                         value.set(input.getEditableText().toString());
                         detectCode(String.valueOf(value));
     });
-        builder.setNegativeButton(R.string.button_cancel,(dialog, id) -> dialog.dismiss());
+        builder.setNegativeButton(R.string.cancel,(dialog, id) -> dialog.dismiss());
 
         builder.show();
     }
@@ -313,14 +316,16 @@ public class DrugListActivity extends AppCompatActivity {
         dlg.setCancelable(true);
 
         if (aMedicine != null) {
+            dlg.setTitle(R.string.addInList);
             dlg.setMessage(aMedicine.getName() + " " + getString(R.string.msgFound));
             dlg.setPositiveButton(R.string.yes, (dialog, id) -> {
                 dialog.dismiss();
                 addDrugToList(Utils.medicine2prescription(aMedicine));
             });
+            dlg.setNegativeButton(R.string.no, (dialog, id) -> dialog.dismiss());
         } else {
             dlg.setMessage(R.string.msgNotFound);
-            dlg.setPositiveButton(R.string.button_close, (dialog, id) -> dialog.dismiss());
+            dlg.setPositiveButton(R.string.close, (dialog, id) -> dialog.dismiss());
         }
         dlg.show();
     }
@@ -330,12 +335,8 @@ public class DrugListActivity extends AppCompatActivity {
      */
     private void scanNotOK() {
         MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
-        dlg.setTitle(getString(R.string.app_name));
-
         dlg.setMessage(R.string.notInterpreted);
-        dlg.setPositiveButton("OK", (dialog, which) -> {
-            // Nothing to do just dismiss dialog
-        });
+        dlg.setPositiveButton(R.string.ok, (dialog, which) -> dialog.dismiss());
         dlg.show();
     }
 

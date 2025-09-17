@@ -45,7 +45,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:accessibilityHeading="true"
         app:backgroundTint="@android:color/transparent"
-        android:contentDescription="@string/button_cancel"
+        android:contentDescription="@string/cancel"
         android:cropToPadding="false"
         app:srcCompat="@drawable/ic_cancel" />
 

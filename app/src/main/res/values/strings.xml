@@ -1,7 +1,7 @@
 <resources>
     <string name="title_drug_detail">Drug Detail</string>
-    <string name="button_cancel">Cancel</string>
-    <string name="button_ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
     <string name="msgNotFound">Drug not found in the database</string>
     <string name="msgFound">Drug found in the database</string>
     <string name="about">About</string>
@@ -16,13 +16,13 @@
     <string name="drug_alertThreshold_label">Critical threshold</string>
     <string name="button_keyboard">"Use the keyboard"</string>
     <string name="detail_view">Detail view</string>
-    <string name="save_button">Save</string>
+    <string name="save">Save</string>
     <string name="flashlightButton">Toggle Flash</string>
     <string name="enter_code_here">Enter CIP 13, CIP 7 or CIS here..</string>
     <string name="enter_code">Enter CIP 13, CIP 7 or CIS </string>
     <string name="channel_description" translatable="false">Pilldroid_NotificationChannel</string>
     <string name="channel_name" translatable="false">PilldroidChannel</string>
-    <string name="button_close">Close</string>
+    <string name="close">Close</string>
     <string name="scan_label">Aim at the barcode to scan it</string>
 
     <!-- slides strings -->
@@ -73,9 +73,9 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="Yes_understood">Yes, I understood</string>
-    <string name="understood">I understood that the developer of Pilldroid cannot be responsible of your medication management. IT\'S YOU OWN RESPONSIBILITY.</string>
+    <string name="understood">I understood that the developer of Pilldroid cannot be responsible of your medication management.\n It\'s you own responsibility.</string>
     <string name="Undo">Undo</string>
     <string name="trash_icon">Trash icon</string>
-    <string name="addInList">add to your list of medicine</string>
+    <string name="addInList">Add to your list of medicine?</string>
     <string name="drug_deleted">Drug deleted</string>
 </resources>

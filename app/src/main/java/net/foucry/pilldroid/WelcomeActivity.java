@@ -130,7 +130,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void askForComprehensive() {
         final MaterialAlertDialogBuilder dlg = new MaterialAlertDialogBuilder(this);
         dlg.setMessage(getString(R.string.understood));
-        dlg.setPositiveButton(R.string.yes, (dialog, id) -> dialog.dismiss());
+        dlg.setPositiveButton(R.string.ok, (dialog, id) -> dialog.dismiss());
         dlg.setCancelable(false);
         dlg.show();
     }
@@ -148,7 +148,7 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         if (dots.length > 0)
-            dots[currentPage].setTextColor(ContextCompat.getColor(this, R.color.dot_light));
+            dots[currentPage].setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     private int getItem() {

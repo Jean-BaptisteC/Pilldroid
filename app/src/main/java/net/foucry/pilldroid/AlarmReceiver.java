@@ -120,11 +120,10 @@ public class AlarmReceiver extends BroadcastReceiver {
     }
 
     private void createNotificationChannel(Context context) {
-        CharSequence name = context.getString(R.string.channel_name);
-        String description = context.getString(R.string.channel_description);
-        int importance = NotificationManager.IMPORTANCE_DEFAULT;
+        String name = "PilldroidChannel";
+        String description = "Pilldroid_NotificationChannel";
         String CHANNEL_ID = "PillDroid";
-        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+        NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationManager.IMPORTANCE_DEFAULT);
         channel.setDescription(description);
         channel.enableLights(true);
         channel.setLightColor(R.color.led);

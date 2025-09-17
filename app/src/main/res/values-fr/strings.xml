@@ -76,4 +76,5 @@
     <string name="trash_icon">Icône de poubelle</string>
     <string name="addInList">Ajouter à votre liste de médicament ?</string>
     <string name="drug_deleted">Médicament supprimé</string>
+    <string name="permission_denied">Permission non autorisé</string>
 </resources>

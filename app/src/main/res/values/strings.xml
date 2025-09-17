@@ -76,4 +76,5 @@
     <string name="trash_icon">Trash icon</string>
     <string name="addInList">Add to your list of medicine?</string>
     <string name="drug_deleted">Drug deleted</string>
+    <string name="permission_denied">Permission is not allowed</string>
 </resources>

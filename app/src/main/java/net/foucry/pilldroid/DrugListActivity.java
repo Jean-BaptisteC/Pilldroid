@@ -392,7 +392,7 @@ public class DrugListActivity extends AppCompatActivity {
                                     Snackbar.LENGTH_LONG).setAction(R.string.Undo, v -> {
                                 prescriptionList.add(position, prescription);
                                 mAdapter.notifyItemInserted(position);
-                            }).setActionTextColor(getResources().getColor(R.color.bg_screen1))
+                            }).setActionTextColor(getResources().getColor(R.color.colorSecondary))
                             .show();
                 } else {
                     // Call DetailView

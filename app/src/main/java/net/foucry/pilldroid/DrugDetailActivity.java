@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
+
 import net.foucry.pilldroid.dao.PrescriptionsDAO;
 import net.foucry.pilldroid.databases.PrescriptionDatabase;
 import net.foucry.pilldroid.models.Prescription;
@@ -108,7 +109,7 @@ public class DrugDetailActivity extends AppCompatActivity {
         View alertView;
 
         stockView = findViewById(R.id.stock_cell);
-        EditText stockTextView = stockView.findViewById(R.id.value);
+        TextInputEditText stockTextView = stockView.findViewById(R.id.value);
         String stockValue = stockTextView.getText().toString();
 
         takeView = findViewById(R.id.take_cell);

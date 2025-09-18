@@ -28,8 +28,8 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:titleTextColor="@color/white"/>
+            app:titleTextColor="@color/white"
+            app:title="@string/edit"/>
 </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView

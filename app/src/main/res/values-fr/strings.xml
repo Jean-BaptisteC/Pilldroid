@@ -59,7 +59,6 @@
     <string name="next">Suivant</string>
     <string name="start">Démarrer</string>
     <string name="add_button">Ajout d\'un médicament dans votre liste</string>
-    <string name="drugName">Nom Médicament</string>
     <string name="stockIcon">Icône de stock</string>
     <string name="Date">lundi 1 janvier 2001</string>
     <string name="Value">Valeur</string>
@@ -70,11 +69,11 @@
     <string name="missing_camera_permission">Autorisation appareil photo manquante</string>
     <string name="yes">Oui</string>
     <string name="no">Non</string>
-    <string name="Yes_understood">Oui, j\'ai compris</string>
     <string name="understood">Je comprends que le développeur de Pilldroid n\'est pas responsable de la gestion de vos médicaments.\n Cela relève de votre seule responsabilité.</string>
     <string name="Undo">Annuler</string>
     <string name="trash_icon">Icône de poubelle</string>
     <string name="addInList">Ajouter à votre liste de médicament ?</string>
     <string name="drug_deleted">Médicament supprimé</string>
     <string name="permission_denied">Permission non autorisé</string>
+    <string name="edit">Editer</string>
 </resources>

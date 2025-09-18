@@ -23,12 +23,13 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/value"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
             android:layout_alignTop="@+id/list_image"
             android:layout_marginStart="5dp"
             android:layout_toEndOf="@+id/list_image"
-            android:text="@string/drugName"
+            android:text="Drug name"
             android:textColor="#040404"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -49,11 +50,6 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- CIP 13 (should change) -->
-
-    <!-- dateEndOfStock -->
-
-    <!-- Rightend Arrow -->
     <com.google.android.material.imageview.ShapeableImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

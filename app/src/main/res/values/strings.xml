@@ -59,7 +59,6 @@
     <string name="start">Start</string>
     <string name="zero" translatable="false">0</string>
     <string name="add_button">Add new drug in list</string>
-    <string name="drugName">Drug Name</string>
     <string name="stockIcon">Stock Icon</string>
     <string name="Date">Monday January 1st 2001</string>
     <string name="Value">Value</string>
@@ -70,11 +69,11 @@
     <string name="missing_camera_permission">Missing camera permission</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="Yes_understood">Yes, I understood</string>
     <string name="understood">I understood that the developer of Pilldroid cannot be responsible of your medication management.\n It\'s you own responsibility.</string>
     <string name="Undo">Undo</string>
     <string name="trash_icon">Trash icon</string>
     <string name="addInList">Add to your list of medicine?</string>
     <string name="drug_deleted">Drug deleted</string>
     <string name="permission_denied">Permission is not allowed</string>
+    <string name="edit">Edit</string>
 </resources>

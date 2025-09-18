@@ -155,7 +155,7 @@ public class DrugListActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
             toolbar.setTitle(getTitle());
         }
-        FloatingActionButton mFloatingActionButton = findViewById(R.id.fab);
+        FloatingActionButton mFloatingActionButton = findViewById(R.id.add);
         mFloatingActionButton.setOnClickListener(v-> onButtonClick());
 
         if (DEMO) {

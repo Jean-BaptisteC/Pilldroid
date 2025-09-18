@@ -43,7 +43,7 @@ public class DrugDetailActivity extends AppCompatActivity {
             setSupportActionBar(toolbar);
         }
 
-        ExtendedFloatingActionButton fab = findViewById(R.id.fab);
+        ExtendedFloatingActionButton fab = findViewById(R.id.save);
         fab.setOnClickListener(v -> {
             getDrugChanges();
             setResult(1);

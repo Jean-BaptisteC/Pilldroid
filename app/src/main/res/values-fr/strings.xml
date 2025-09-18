@@ -2,7 +2,7 @@
 <resources>
     <string name="title_drug_detail">Détail Médicament</string>
     <string name="cancel">Annuler</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="drug_presentation_label">Contenu de la boite</string>
     <string name="drug_name_label">Nom</string>
     <string name="drug_administrationMode_label">Mode d\'administration</string>

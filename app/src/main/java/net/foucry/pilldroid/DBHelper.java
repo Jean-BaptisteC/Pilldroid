@@ -358,4 +358,3 @@ class DBHelper extends SQLiteOpenHelper {
         return value;
     }
 }
-

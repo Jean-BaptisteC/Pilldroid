@@ -55,5 +55,4 @@ public class Utils {
                 return (int) (lhs.getStock() - rhs.getStock());
         });
     }
-
 }

@@ -1,7 +1,7 @@
 <resources>
     <string name="title_drug_detail">Drug Detail</string>
     <string name="cancel">Cancel</string>
-    <string name="ok">Ok</string>
+    <string name="ok">OK</string>
     <string name="msgNotFound">Drug not found in the database</string>
     <string name="msgFound">Drug found in the database</string>
     <string name="about">About</string>

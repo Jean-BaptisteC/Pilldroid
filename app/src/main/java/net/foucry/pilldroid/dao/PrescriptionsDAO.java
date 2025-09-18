@@ -30,5 +30,3 @@ public interface PrescriptionsDAO {
     @Query("SELECT count(*) FROM prescriptions")
     int getMedicCount();
 }
-
-

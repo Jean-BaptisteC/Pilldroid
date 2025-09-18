@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
 import com.journeyapps.barcodescanner.ViewfinderView;
@@ -80,7 +81,7 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         onCancel(this.getCurrentFocus());
     }

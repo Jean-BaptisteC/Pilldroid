@@ -27,4 +27,3 @@
         android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
         android:textStyle="bold" />
 </LinearLayout>
-

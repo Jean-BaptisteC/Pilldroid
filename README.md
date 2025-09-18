@@ -1,7 +1,6 @@
-# Pilldroid
+<h1 align="center">Pilldroid</h1>
 
-Pilldroid est une application de gestion de stock **théorique** de médicament à
-destination des personnes résidant en France.
+Pilldroid is a theoretical medication stock management application for people living in France.
 
 <a href="https://f-droid.org/packages/net.foucry.pilldroid">
     <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"

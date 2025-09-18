@@ -388,19 +388,18 @@ public class DrugListActivity extends AppCompatActivity {
                     // Remove item form database
                     PrescriptionsDAO prescriptionsDAO = prescriptions.getPrescriptionsDAO();
                     prescriptionsDAO.delete(prescription);
+                    Snackbar.make(recyclerView, getString(R.string.drug_deleted),
+                                    Snackbar.LENGTH_LONG).setAction(R.string.Undo, v -> {
+                                prescriptionList.add(position, prescription);
+                                mAdapter.notifyItemInserted(position);
+                            }).setActionTextColor(getResources().getColor(R.color.bg_screen1))
+                            .show();
                 } else {
                     // Call DetailView
                     Intent intent = new Intent(getApplicationContext(), DrugDetailActivity.class);
                     intent.putExtra("prescription", prescription);
                     startActivityForResult(intent, CUSTOMIZED_REQUEST_CODE);
                 }
-
-                Snackbar.make(recyclerView, getString(R.string.drug_deleted),
-                        Snackbar.LENGTH_LONG).setAction(R.string.Undo, v -> {
-                            prescriptionList.add(position, prescription);
-                            mAdapter.notifyItemInserted(position);
-                        }).setActionTextColor(getResources().getColor(R.color.bg_screen1))
-                        .show();
             }
 
             @Override

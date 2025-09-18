@@ -45,9 +45,9 @@ import net.foucry.pilldroid.databases.MedicineDatabase;
 import net.foucry.pilldroid.databases.PrescriptionDatabase;
 import net.foucry.pilldroid.models.Medicine;
 import net.foucry.pilldroid.models.Prescription;
+import net.foucry.pilldroid.utils.Constants;
 import net.foucry.pilldroid.utils.DemoMedicine;
 import net.foucry.pilldroid.utils.Utils;
-import net.foucry.pilldroid.utils.Constants;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -293,14 +293,10 @@ public class DrugListActivity extends AppCompatActivity {
     public void detectCode(String value) {
         MedicinesDAO medicinesDAO = medicines.getMedicinesDAO();
         Medicine aMedicine = null;
-        if(value.length() == Constants.CIP13){
-            aMedicine = medicinesDAO.getMedicineByCIP13(value);
-            }
-        else if(value.length() == Constants.CIS){
-            aMedicine = medicinesDAO.getMedicineByCIS(value);
-        }
-        else if (value.length() == Constants.CIP7) {
-            aMedicine = medicinesDAO.getMedicineByCIP7(value);
+        switch (value.length()) {
+            case Constants.CIP13 -> aMedicine = medicinesDAO.getMedicineByCIP13(value);
+            case Constants.CIS -> aMedicine = medicinesDAO.getMedicineByCIS(value);
+            case Constants.CIP7 -> aMedicine = medicinesDAO.getMedicineByCIP7(value);
         }
         askToAddInDB(aMedicine);
     }

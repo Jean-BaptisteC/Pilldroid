@@ -2,9 +2,6 @@
 /*/build/
 /build
 
-# Crashlytics configuations
-com_crashlytics_export_strings.xml
-
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -50,4 +47,5 @@ gen/
 
 # Other considerations
 *.html
+*.dm
 *~

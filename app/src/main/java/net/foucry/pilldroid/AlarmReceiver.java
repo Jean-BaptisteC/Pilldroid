@@ -102,30 +102,35 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         if (firstPrescription != null) {
             if (firstPrescription.getTake() != 0) {
-                notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+                if (firstPrescription.getStock() <= firstPrescription.getAlertThreshold()) {
+                    notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-                Intent notificationIntent = new Intent(context, DrugListActivity.class);
-                notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
-                        | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    Intent notificationIntent = new Intent(context, DrugListActivity.class);
+                    notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP
+                            | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
 
-                NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "PillDroid")
-                        .setSmallIcon(R.drawable.ic_pill_alarm)
-                        .setContentTitle(context.getString(R.string.app_name))
-                        .setContentText(context.getString(R.string.notification_text))
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
-                        .setContentIntent(pendingIntent)
-                        .setColorized(true)
-                        .setAutoCancel(true);
+                    NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "PillDroid")
+                            .setSmallIcon(R.drawable.ic_pill_alarm)
+                            .setContentTitle(context.getString(R.string.app_name))
+                            .setContentText(context.getString(R.string.notification_text))
+                            .setPriority(NotificationCompat.PRIORITY_HIGH)
+                            .setContentIntent(pendingIntent)
+                            .setColorized(true)
+                            .setAutoCancel(true);
 
-                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
-                int notificationId = 666;
-                if (Constants.build >= Build.VERSION_CODES.TIRAMISU
-                        && notificationManager.areNotificationsEnabled()) {
-                    notificationManager.notify(notificationId, builder.build());
+                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
+                    int notificationId = 666;
+                    if (Constants.build >= Build.VERSION_CODES.TIRAMISU
+                            && notificationManager.areNotificationsEnabled()) {
+                        notificationManager.notify(notificationId, builder.build());
+                    } else {
+                        Log.i(TAG, "Permission refused");
+                    }
                 } else {
-                    Log.i(TAG, "Permission refused");
+                    double dummy = (firstPrescription.getStock() - firstPrescription.getAlertThreshold());
+                    Log.d(TAG, "no notification scheduled " + dummy);
                 }
             }
         }

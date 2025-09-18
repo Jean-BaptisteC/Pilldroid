@@ -29,6 +29,7 @@
             android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
             app:titleTextColor="@color/white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
             app:title="@string/edit"/>
 </com.google.android.material.appbar.AppBarLayout>
 

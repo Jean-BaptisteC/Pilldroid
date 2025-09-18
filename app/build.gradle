@@ -38,7 +38,7 @@ android {
         minSdkVersion defaultMinSdkVersion
         targetSdkVersion defaultTargetSdkVersion
         versionCode 1
-        versionName 'v1'
+        versionName '1.0'
         multiDexEnabled true
 
         javaCompileOptions {

@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.icu.util.Calendar;
 import android.os.Build;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
@@ -58,7 +57,7 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (Constants.build >= Build.VERSION_CODES.S && alarmManager.canScheduleExactAlarms()) {
             alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
         } else {
-            Toast.makeText(context, R.string.permission_denied, Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "Permission refused");
         }
 
         Log.d(TAG, "Alarm scheduled for " + UtilDate.convertDate(calendar.getTimeInMillis()));

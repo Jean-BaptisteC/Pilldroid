@@ -31,6 +31,8 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 
+import net.foucry.pilldroid.utils.Utils;
+
 public class WelcomeActivity extends AppCompatActivity {
 
     private static final String TAG = WelcomeActivity.class.getName();
@@ -116,6 +118,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // making notification bar transparent
         changeStatusBarColor();
+        Utils.changedNavigationBarColor(this);
 
         MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);

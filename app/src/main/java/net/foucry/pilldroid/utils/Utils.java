@@ -1,5 +1,12 @@
 package net.foucry.pilldroid.utils;
 
+import static android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS;
+
+import android.app.Activity;
+import android.content.Context;
+import android.os.Build;
+import android.view.Window;
+
 import net.foucry.pilldroid.models.Medicine;
 import net.foucry.pilldroid.models.Prescription;
 
@@ -54,5 +61,13 @@ public class Utils {
             else
                 return (int) (lhs.getStock() - rhs.getStock());
         });
+    }
+
+    public static void changedNavigationBarColor(Activity activity) {
+        Window window = activity.getWindow();
+        window.getDecorView().setSystemUiVisibility(0);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            window.getDecorView().getWindowInsetsController().setSystemBarsAppearance(0, APPEARANCE_LIGHT_STATUS_BARS);
+        }
     }
 }

@@ -54,12 +54,15 @@ public class AlarmReceiver extends BroadcastReceiver {
         alarmIntent = PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        if (Constants.build >= Build.VERSION_CODES.S && alarmManager.canScheduleExactAlarms()) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
+        if (Constants.build >= Build.VERSION_CODES.S) {
+            if (alarmManager.canScheduleExactAlarms()) {
+                alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
+            } else {
+                Log.i(TAG, "Permission refused");
+            }
         } else {
-            Log.i(TAG, "Permission refused");
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, (calendar.getTimeInMillis()), alarmIntent);
         }
-
         Log.d(TAG, "Alarm scheduled for " + UtilDate.convertDate(calendar.getTimeInMillis()));
     }
 
@@ -109,7 +112,6 @@ public class AlarmReceiver extends BroadcastReceiver {
                             | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
                     PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, notificationIntent, PendingIntent.FLAG_IMMUTABLE);
-
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "PillDroid")
                             .setSmallIcon(R.drawable.ic_pill_alarm)
                             .setContentTitle(context.getString(R.string.app_name))
@@ -121,11 +123,14 @@ public class AlarmReceiver extends BroadcastReceiver {
 
                     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(context);
                     int notificationId = 666;
-                    if (Constants.build >= Build.VERSION_CODES.TIRAMISU
-                            && notificationManager.areNotificationsEnabled()) {
-                        notificationManager.notify(notificationId, builder.build());
+                    if (Constants.build >= Build.VERSION_CODES.TIRAMISU) {
+                        if (notificationManager.areNotificationsEnabled()) {
+                            notificationManager.notify(notificationId, builder.build());
+                        } else {
+                            Log.i(TAG, "Permission refused");
+                        }
                     } else {
-                        Log.i(TAG, "Permission refused");
+                        notificationManager.notify(notificationId, builder.build());
                     }
                 } else {
                     double dummy = (firstPrescription.getStock() - firstPrescription.getAlertThreshold());

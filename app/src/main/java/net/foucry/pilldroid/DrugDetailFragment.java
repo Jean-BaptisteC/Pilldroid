@@ -54,7 +54,7 @@ public class DrugDetailFragment extends Fragment {
             assert activity != null;
             MaterialToolbar appBarLayout = activity.findViewById(R.id.toolbar);
             if (appBarLayout != null) {
-                appBarLayout.setTitle(prescription.getName());
+                appBarLayout.setTitle(getString(R.string.edit));
             }
         }
     }

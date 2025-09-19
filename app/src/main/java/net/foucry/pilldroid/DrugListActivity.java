@@ -1,5 +1,6 @@
 package net.foucry.pilldroid;
 
+import static net.foucry.pilldroid.utils.Constants.DEMO;
 import static net.foucry.pilldroid.utils.UtilDate.date2String;
 
 import android.annotation.SuppressLint;
@@ -68,8 +69,6 @@ public class DrugListActivity extends AppCompatActivity {
     public final int CUSTOMIZED_REQUEST_CODE = 0x0000ffff;
     public final String BARCODE_FORMAT_NAME = "Barcode Format name";
     public final String BARCODE_CONTENT = "Barcode Content";
-    // Used for dev and debug
-    final Boolean DEMO = false;
     public PrescriptionDatabase prescriptions;
     public MedicineDatabase medicines;
     private ActivityResultLauncher<ScanOptions> mBarcodeScannerLauncher;

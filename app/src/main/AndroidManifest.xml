@@ -64,7 +64,11 @@
             android:label="À propos de PillDroid"
             android:parentActivityName=".DrugListActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/BaseTheme" />
+            android:theme="@style/BaseTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="net.foucry.pilldroid.DrugListActivity" />
+        </activity>
         <activity android:name=".CustomScannerActivity" />
         <receiver android:name="net.foucry.pilldroid.AlarmReceiver"
             android:exported="false">

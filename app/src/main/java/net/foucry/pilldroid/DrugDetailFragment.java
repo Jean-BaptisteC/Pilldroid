@@ -1,13 +1,12 @@
 package net.foucry.pilldroid;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-import com.google.android.material.appbar.MaterialToolbar;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textview.MaterialTextView;
 import net.foucry.pilldroid.models.Prescription;
@@ -49,13 +48,6 @@ public class DrugDetailFragment extends Fragment {
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
             prescription = (Prescription) getArguments().getSerializable(ARG_ITEM_ID);
-
-            Activity activity = this.getActivity();
-            assert activity != null;
-            MaterialToolbar appBarLayout = activity.findViewById(R.id.toolbar);
-            if (appBarLayout != null) {
-                appBarLayout.setTitle(getString(R.string.edit));
-            }
         }
     }
 

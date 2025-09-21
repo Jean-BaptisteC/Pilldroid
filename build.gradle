@@ -12,9 +12,9 @@ buildscript {
     }
 }
 ext {
-    compileSdkVersion = 34
+    compileSdkVersion = 35
     defaultMinSdkVersion = 26
-    defaultTargetSdkVersion = 34
+    defaultTargetSdkVersion = 35
 }
 
 allprojects {

@@ -26,6 +26,9 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -147,6 +150,11 @@ public class DrugListActivity extends AppCompatActivity {
 
         // Set view content
         setContentView(R.layout.drug_list_activity);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.list), (v, insetsCompat) -> {
+            Insets insets = insetsCompat.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            return insetsCompat;
+        });
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
 

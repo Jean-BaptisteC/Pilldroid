@@ -542,7 +542,7 @@ public class DrugListActivity extends AppCompatActivity {
             return mValues.size();
         }
 
-        class ViewHolder extends RecyclerView.ViewHolder {
+        static class ViewHolder extends RecyclerView.ViewHolder {
             final View mView;
             final MaterialTextView mContentView;
             final MaterialTextView mEndOfStock;

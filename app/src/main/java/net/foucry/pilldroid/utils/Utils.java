@@ -3,7 +3,6 @@ package net.foucry.pilldroid.utils;
 import static android.view.WindowInsetsController.APPEARANCE_LIGHT_STATUS_BARS;
 
 import android.app.Activity;
-import android.content.Context;
 import android.os.Build;
 import android.view.Window;
 

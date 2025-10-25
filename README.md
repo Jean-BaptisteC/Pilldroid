@@ -2,57 +2,47 @@
 
 Pilldroid is a theoretical medication stock management application for people living in France.
 
-<a href="https://f-droid.org/packages/net.foucry.pilldroid">
+<!--<a href="https://f-droid.org/packages/net.foucry.pilldroid">
     <img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
     alt="Get it on F-Droid"
     height="80">
-</a>
+</a>-->
 
-## Qu'est-ce que Pilldroid ?
+## What is Pilldroid?
 
-Pilldroid est une applicaton de gestion de stock _théorique_ de médicaments,
-pour téléphone Android©.
+Pilldroid is an applicaton for theoretical stock management of medicines on Android.
 
-## Pourquoi « Stock théorique » ?
+## Why "Theoretical stock"?
 
-Pilldroid ne sait pas (et n'a aucun moyen de savoir) si vous avez ou non pris vos
-médicaments. Pilldroid effectue, simple calcul : `stock connu - prise par
-jour`. Ce calcul est fait tous les jours entre 11h et midi.
+Pilldroid doesn’t know (and has no way of knowing) whether or not you have taken your
+medicines. Pilldroid performs, simple calculation : `known stock - taken by
+day`. This calculation is done every day between 11 AM and noon.
 
 
-## De quelles autorisations l'application Pilldroid a-t-elle besoin ?
+## What permissions does the Pilldroid app need?
 
-- Pilldroid a besoin de savoir que le téléphone a été redémarré pour elle-même
-lancer son cycle de réveil journalier.
-- Pilldroid a besoin d'accéder à l'appareil photo de votre téléphone pour
-  scanner le code-barres des boîtes de médicaments.
-- Pilldroid a besoin de pouvoir vous envoyer des notifications.
-- Pilldroid a besoin de faire vibrer le téléphone pour les notifications.
+- Pilldroid needs to know that the phone was restarted for itself
+start his daily wake-up cycle.
+- Pilldroid needs access to your phone’s camera for
+  scan the barcode of the medicine boxes.
+- Pilldroid needs to be able to send you notifications.
+- Pilldroid needs to vibrate the phone for notifications.
 
-## L'application Pilldroid embarque-t-elle des bibliothèques tierce ?
+## Does the Pilldroid app ship with third-party libraries?
 
-Oui. Pour la lecture de code-barres, Pilldroid utilise le projet
-[zxing](https://github.com/journeyapps/zxing-android-embedded) lui-même libre et
-ouvert.
+Yes. For barcode reading, Pilldroid uses the project
+[zxing](https://github.com/journeyapps/zxing-android-embedded) itself free and
+open.
 
-## L'application Pilldroid contient-elle des pisteurs ?
+## Does the Pilldroid app contain trackers?
 
-[NON !](https://reports.exodus-privacy.eu.org/fr/reports/net.foucry.pilldroid/latest/)
+[NO !](https://reports.exodus-privacy.eu.org/fr/reports/net.foucry.pilldroid/latest/)
 
-## D'où viennent les données de Pilldroid ?
+## Where does Pilldroid’s data come from?
 
-Elles sont issues de plusieurs fichiers de l'Agence pour la Sécurité des
-Médicaments, agrégés dans une base de données grâce à script Python qui est disponible sur le dépôt [TransformMeds](https://github.com/jfoucry/TransformMeds).
+They come from several files of the Agency for the Security of
+Medicines, aggregated in a database through python script which is available in the past on this repository [TransformMeds](https://github.com/jfoucry/TransformMeds).
 
-## Ce que n'est pas Pilldroid
+## How contribute to Pilldroid ?
 
-- Pilldroid n'est pas un pilulier. Pilldroid ne vous rappellera pas de prendre
-vos médicaments, c'est **VOTRE** responsabilité.
-- Pilldroid n'est pas fiable, ce n'est qu'une aide. Seul votre stock réel est bon.
-
-## Comment peut-on participer à Pilldroid ?
-
-Mon code est de piètre qualité et mes connaissances Java maigrelettes toute
-amélioration **que je comprends** sera la bienvenue.
-
-Marché de niche, Pilldroid a besoin de testeuses et testeurs.
+This project is a fork of [Pilldroid](https://github.com/jfoucry/Pilldroid), the initial developer has died in september 2025 and I want to continue to maintain the project (only for maintenance).

@@ -10,6 +10,7 @@
         <item name="popupMenuBackground">@color/white</item>
         <item name="colorPrimaryContainer">@color/primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <style name="BaseTheme.NoActionBar">

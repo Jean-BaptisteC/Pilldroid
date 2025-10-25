@@ -153,6 +153,7 @@ public class DrugListActivity extends AppCompatActivity {
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.list), (v, insetsCompat) -> {
             Insets insets = insetsCompat.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            v.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
             return insetsCompat;
         });
 

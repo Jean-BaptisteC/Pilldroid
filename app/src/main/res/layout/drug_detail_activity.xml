@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/drug_test"
     android:background="@color/backgroundColor"
-    android:backgroundTint="@color/cardview_shadow_start_color"
     android:fitsSystemWindows="true"
+    android:backgroundTint="@color/backgroundColor"
     tools:context="net.foucry.pilldroid.DrugDetailActivity"
     tools:ignore="MergeRootFrame">
 
@@ -25,11 +26,10 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
             app:titleTextColor="@color/white"
-            app:popupTheme="@style/ThemeOverlay.Material3.Light"
             app:title="@string/edit"/>
 </com.google.android.material.appbar.AppBarLayout>
 

@@ -8,6 +8,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -38,6 +43,12 @@ public class DrugDetailActivity extends AppCompatActivity {
         assert bundle != null;
         aPrescription = (Prescription) bundle.get("prescription");
         setContentView(R.layout.drug_detail_activity);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.drug_test), (v, insetsCompat) -> {
+            Insets insets = insetsCompat.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            v.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+            return insetsCompat;
+        });
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
 
         if (toolbar != null) {

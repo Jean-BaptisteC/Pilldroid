@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/scanner"
     tools:context="net.foucry.pilldroid.CustomScannerActivity">
 
     <com.journeyapps.barcodescanner.DecoratedBarcodeView
@@ -23,7 +24,8 @@
             android:layout_marginBottom="@dimen/fab_margin"
             app:backgroundTint="@android:color/transparent"
             android:contentDescription="@string/flashlightButton"
-            app:srcCompat="@drawable/ic_flashlight_on" />
+            app:srcCompat="@drawable/ic_flashlight_on"
+            app:tint="@android:color/white"/>
     </com.journeyapps.barcodescanner.DecoratedBarcodeView>
 
 </RelativeLayout>

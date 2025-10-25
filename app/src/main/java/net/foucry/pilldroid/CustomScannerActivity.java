@@ -10,6 +10,10 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.journeyapps.barcodescanner.CaptureManager;
 import com.journeyapps.barcodescanner.DecoratedBarcodeView;
@@ -32,6 +36,12 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.custom_scanner_activity);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.scanner), (v, insetsCompat) -> {
+            Insets insets = insetsCompat.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(insets.left, insets.top, insets.right, insets.bottom);
+            v.setBackgroundColor(ContextCompat.getColor(this, R.color.grey));
+            return insetsCompat;
+        });
 
         findViewById(R.id.keyboard_button).setOnClickListener(this::onKeyboard);
         findViewById(R.id.cancel_button).setOnClickListener(this::onCancel);

@@ -47,7 +47,8 @@
         app:backgroundTint="@android:color/transparent"
         android:contentDescription="@string/cancel"
         android:cropToPadding="false"
-        app:srcCompat="@drawable/ic_cancel" />
+        app:srcCompat="@drawable/ic_cancel"
+        app:tint="@android:color/white"/>
 
     <ImageButton
         android:id="@+id/keyboard_button"
@@ -58,6 +59,6 @@
         app:backgroundTint="@android:color/transparent"
         android:contentDescription="@string/button_keyboard"
         app:srcCompat="@drawable/ic_keyboard"
-        tools:ignore="PrivateResource" />
+        app:tint="@android:color/white"/>
 
 </merge>

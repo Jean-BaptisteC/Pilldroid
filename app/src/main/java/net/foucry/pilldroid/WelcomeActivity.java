@@ -141,14 +141,20 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     private void firstStart() {
-        askForComprehensive();
-        prefManager.setUnderstood(true);
         if (build >= Build.VERSION_CODES.TIRAMISU) {
             requestNotificationPermission.launch(POST_NOTIFICATIONS);
         }
         if (build >= Build.VERSION_CODES.S) {
-            getApplicationContext().startActivity(new Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
+            final MaterialAlertDialogBuilder dialog = new MaterialAlertDialogBuilder(this);
+            dialog.setMessage(R.string.schedule_option);
+            dialog.setPositiveButton(R.string.yes, (v, id) -> startActivity(new Intent(ACTION_REQUEST_SCHEDULE_EXACT_ALARM).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK)));
+            dialog.setNegativeButton(R.string.no, (v, id)-> finish()
+            );
+            dialog.setCancelable(false);
+            dialog.show();
         }
+        askForComprehensive();
+        prefManager.setUnderstood(true);
     }
 
     private void askForComprehensive() {
@@ -194,7 +200,6 @@ public class WelcomeActivity extends AppCompatActivity {
         window.setStatusBarColor(Color.TRANSPARENT);
     }
 
-    @SuppressWarnings("deprecation")
     private void setFullScreen() {
         if (build >= Build.VERSION_CODES.R) {
             getWindow().setDecorFitsSystemWindows(false);

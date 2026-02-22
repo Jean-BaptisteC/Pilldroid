@@ -77,4 +77,5 @@
     <string name="drug_deleted">Drug deleted</string>
     <string name="permission_denied">Permission is not allowed</string>
     <string name="edit">Edit</string>
+    <string name="schedule_option">Our app requires enabling the option to allow planning schedules; do you want to open settings?</string>
 </resources>

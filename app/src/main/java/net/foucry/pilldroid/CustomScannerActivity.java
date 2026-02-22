@@ -103,7 +103,7 @@ public class CustomScannerActivity extends AppCompatActivity implements Decorate
      * @return true if there is Flashlight, otherwise false.
      */
     private boolean hasFlash() {
-        return getApplicationContext().getPackageManager()
+        return getApplication().getPackageManager()
                 .hasSystemFeature(PackageManager.FEATURE_CAMERA_FLASH);
     }
 

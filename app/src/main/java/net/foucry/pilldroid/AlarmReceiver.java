@@ -81,7 +81,7 @@ public class AlarmReceiver extends BroadcastReceiver {
             scheduleAlarm(context);
         }
         createNotificationChannel(context);
-        PrescriptionDatabase prescriptions = PrescriptionDatabase.getInstanceDatabase(context.getApplicationContext());
+        PrescriptionDatabase prescriptions = PrescriptionDatabase.getInstanceDatabase(context);
         PrescriptionsDAO prescriptionsDAO = prescriptions.getPrescriptionsDAO();
         List<Prescription> prescriptionList = prescriptionsDAO.getAllMedics();
         Prescription firstPrescription = null;

@@ -141,7 +141,7 @@ public class DrugListActivity extends AppCompatActivity {
 
         // Create Room database
         prescriptions = Room
-                .databaseBuilder(getApplicationContext(), PrescriptionDatabase.class, "prescriptions")
+                .databaseBuilder(getApplication(), PrescriptionDatabase.class, "prescriptions")
                 .allowMainThreadQueries()
                 .build();
 
@@ -360,7 +360,7 @@ public class DrugListActivity extends AppCompatActivity {
      * @param recyclerView RecyclerView
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getApplicationContext()));
+        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getApplication()));
         mAdapter = new RecyclerViewAdapter(prescriptionList);
         recyclerView.setAdapter(mAdapter);
 
@@ -391,7 +391,7 @@ public class DrugListActivity extends AppCompatActivity {
                             .show();
                 } else {
                     // Call DetailView
-                    Intent intent = new Intent(getApplicationContext(), DrugDetailActivity.class);
+                    Intent intent = new Intent(getApplication(), DrugDetailActivity.class);
                     intent.putExtra("prescription", prescription);
                     startActivityForResult(intent, CUSTOMIZED_REQUEST_CODE);
                 }
@@ -405,10 +405,10 @@ public class DrugListActivity extends AppCompatActivity {
 
                     Paint p = new Paint();
                     Drawable icon;
-                    icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_trash_can);
+                    icon = ContextCompat.getDrawable(getApplication(), R.drawable.ic_trash_can);
                     p.setColor(getColor(R.color.backgroundColor));
 
-                    int xMarkMargin = (int) getApplicationContext().getResources().getDimension(R.dimen.fab_margin);
+                    int xMarkMargin = (int) getApplication().getResources().getDimension(R.dimen.fab_margin);
 
                     assert icon != null;
                     int intrinsicWidth = icon.getIntrinsicWidth();
@@ -416,7 +416,7 @@ public class DrugListActivity extends AppCompatActivity {
                     int itemHeight = itemView.getBottom() - itemView.getTop();
 
                     if (dX > 0) {
-                        icon = ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_edit);
+                        icon = ContextCompat.getDrawable(getApplication(), R.drawable.ic_edit);
 
                         // Draw Rect with varying right side, equal to displacement dX
                         c.drawRect((float) itemView.getLeft(), (float) itemView.getTop(), dX,
@@ -471,14 +471,14 @@ public class DrugListActivity extends AppCompatActivity {
                 notifyItemInserted(mValues.size());
                 prescriptionsDAO.insert(scannedPrescription);
             } else {
-                Toast.makeText(getApplicationContext(), "already in the database", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplication(), "already in the database", Toast.LENGTH_LONG).show();
             }
         }
 
         @NonNull
         @Override
         public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
+            View view = LayoutInflater.from(getApplication())
                     .inflate(R.layout.drug_list_content, parent, false);
             return new ViewHolder(view);
         }

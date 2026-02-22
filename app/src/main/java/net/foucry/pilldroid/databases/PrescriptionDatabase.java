@@ -32,7 +32,7 @@ public abstract class PrescriptionDatabase extends RoomDatabase {
         if (INSTANCE == null) {
             INSTANCE =
                     Room
-                            .databaseBuilder(context.getApplicationContext(),
+                            .databaseBuilder(context,
                                     PrescriptionDatabase.class, "prescriptions")
                             .allowMainThreadQueries()
                             .build();

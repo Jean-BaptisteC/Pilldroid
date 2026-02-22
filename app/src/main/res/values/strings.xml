@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name" translatable="false">Pilldroid</string>
     <string name="title_drug_detail">Drug Detail</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>

@@ -80,7 +80,7 @@ android {
             implementation("com.google.android.material:material:1.11.0")
             implementation("androidx.legacy:legacy-support-v4:1.0.0")
             implementation("com.journeyapps:zxing-android-embedded:4.3.0")
-            implementation("androidx.core:core:1.17.0")
+            implementation("androidx.core:core:1.16.0")
 
             //coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.0'
         }

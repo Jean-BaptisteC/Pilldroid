@@ -37,6 +37,9 @@ android {
             buildFeatures {
                 buildConfig = true
             }
+            androidResources {
+                generateLocaleConfig = true
+            }
 
             buildTypes {
                 debug {

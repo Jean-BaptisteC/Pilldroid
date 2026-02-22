@@ -69,4 +69,11 @@
 
     <style name="BaseTheme.PopupOverlay" parent="ThemeOverlay.Material3.Light" />
 
+    <style name="BaseTheme.AppBar" parent="Widget.Material3.Toolbar">
+        <item name="android:background">@color/md_theme_surface</item>
+        <item name="titleTextColor">@color/md_theme_onSurface</item>
+        <item name="navigationIconTint">@color/md_theme_onSurface</item>
+        <item name="menu">@style/ThemeOverlay.Material3.Light</item>
+    </style>
+
 </resources>

@@ -10,19 +10,16 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
+        style="@style/BaseTheme.AppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fitsSystemWindows="true"
-        android:background="@color/colorPrimary">
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_collapseMode="pin"
-            app:titleTextColor="@color/white"
-            app:popupTheme="@style/ThemeOverlay.Material3.Light"
-            app:navigationIconTint="@android:color/white"/>
+            app:layout_collapseMode="pin" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

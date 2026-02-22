@@ -10,19 +10,16 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
+        style="@style/BaseTheme.AppBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
-            app:titleTextColor="@color/white"
-            app:navigationIconTint="@android:color/white"
             app:title="@string/edit"/>
 </com.google.android.material.appbar.AppBarLayout>
 

@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:id="@+id/drug_test"
     android:background="@color/backgroundColor"
-    android:fitsSystemWindows="true"
     android:backgroundTint="@color/backgroundColor"
     tools:context="net.foucry.pilldroid.DrugDetailActivity"
     tools:ignore="MergeRootFrame">
@@ -13,15 +12,9 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:contentScrim="#0000"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed" />
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/toolbar"
@@ -30,6 +23,7 @@
             android:background="@color/colorPrimary"
             app:layout_collapseMode="pin"
             app:titleTextColor="@color/white"
+            app:navigationIconTint="@android:color/white"
             app:title="@string/edit"/>
 </com.google.android.material.appbar.AppBarLayout>
 

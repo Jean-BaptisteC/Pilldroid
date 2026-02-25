@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name" translatable="false">Pilldroid</string>
     <string name="title_drug_detail">Drug Detail</string>
+    <string name="title_welcome">Welcome</string>
+    <string name="title_about">About Pilldroid</string>
     <string name="cancel">Cancel</string>
     <string name="ok">OK</string>
     <string name="msgNotFound">Drug not found in the database</string>

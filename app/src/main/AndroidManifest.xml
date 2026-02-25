@@ -47,7 +47,7 @@
         </activity>
         <activity
             android:name=".WelcomeActivity"
-            android:label="Welcome"
+            android:label="@string/title_welcome"
             android:parentActivityName=".DrugListActivity"
             android:configChanges="orientation|screenSize|uiMode">
             <meta-data
@@ -56,7 +56,7 @@
         </activity>
         <activity
             android:name=".About"
-            android:label="À propos de PillDroid"
+            android:label="@string/title_about"
             android:parentActivityName=".DrugListActivity"
             android:configChanges="orientation|screenSize|uiMode">
             <meta-data

@@ -26,6 +26,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -360,7 +361,7 @@ public class DrugListActivity extends AppCompatActivity {
      * @param recyclerView RecyclerView
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.addItemDecoration(new SimpleDividerItemDecoration(getApplication()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getApplication(), DividerItemDecoration.VERTICAL));
         mAdapter = new RecyclerViewAdapter(prescriptionList);
         recyclerView.setAdapter(mAdapter);
 

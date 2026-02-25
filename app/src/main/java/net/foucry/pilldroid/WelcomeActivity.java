@@ -21,8 +21,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -35,39 +35,10 @@ public class WelcomeActivity extends AppCompatActivity {
     private static final String TAG = WelcomeActivity.class.getName();
 
     private ActivityResultLauncher<String> requestNotificationPermission;
-    private ViewPager viewPager;
-    private LinearProgressIndicator progresssIndicator;
+    private ViewPager2 viewPager;
+    private LinearProgressIndicator progressIndicator;
     private int[] layouts;
     private MaterialButton btnSkip, btnNext;
-    //  viewpager change listener
-    final ViewPager.OnPageChangeListener viewPagerPageChangeListener = new ViewPager.OnPageChangeListener() {
-
-        @Override
-        public void onPageSelected(int position) {
-            // changing the next button text 'NEXT' / 'GOT IT'
-            if (position == layouts.length - 1) {
-                // last page. make button text to GOT IT
-                btnNext.setText(getString(R.string.start));
-                btnSkip.setVisibility(View.GONE);
-            } else {
-                // still pages are left
-                btnNext.setText(getString(R.string.next));
-                btnSkip.setVisibility(View.VISIBLE);
-            }
-            int progress = (int) (((viewPager.getCurrentItem() + 1f) / layouts.length) * 100);
-            progresssIndicator.setProgress(progress, true);
-        }
-
-        @Override
-        public void onPageScrolled(int arg0, float arg1, int arg2) {
-
-        }
-
-        @Override
-        public void onPageScrollStateChanged(int arg0) {
-
-        }
-    };
     private PrefManager prefManager;
 
     @Override
@@ -90,7 +61,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setFullScreen();
 
         viewPager = findViewById(R.id.view_pager);
-        progresssIndicator = findViewById(R.id.progress_indicator);
+        progressIndicator = findViewById(R.id.progress_indicator);
         btnSkip = findViewById(R.id.btn_skip);
         btnNext = findViewById(R.id.btn_next);
 
@@ -116,8 +87,22 @@ public class WelcomeActivity extends AppCompatActivity {
 
         MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
-        viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
-
+        viewPager.setOffscreenPageLimit(1);
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                if (position == layouts.length - 1) {
+                    btnNext.setText(getString(R.string.start));
+                    btnSkip.setVisibility(View.GONE);
+                } else {
+                    btnNext.setText(getString(R.string.next));
+                    btnSkip.setVisibility(View.VISIBLE);
+                }
+                int progress = (int) (((position + 1f) / layouts.length) * 100);
+                progressIndicator.setProgress(progress, true);
+            }
+        });
         btnSkip.setOnClickListener(v -> launchHomeScreen());
 
         btnNext.setOnClickListener(v -> {
@@ -199,37 +184,35 @@ public class WelcomeActivity extends AppCompatActivity {
     /**
      * View pager adapter
      */
-    public class MyViewPagerAdapter extends PagerAdapter {
-
-        public MyViewPagerAdapter() {
-        }
+    public class MyViewPagerAdapter extends RecyclerView.Adapter<MyViewPagerAdapter.ViewHolder> {
 
         @NonNull
         @Override
-        public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            LayoutInflater layoutInflater = getLayoutInflater();
-
-            View view = layoutInflater.inflate(layouts[position], container, false);
-            container.addView(view);
-
-            return view;
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(layouts[viewType], parent, false);
+            return new ViewHolder(view);
         }
 
         @Override
-        public int getCount() {
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            // Rien à binder car chaque page est un layout statique
+        }
+
+        @Override
+        public int getItemCount() {
             return layouts.length;
         }
 
         @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object obj) {
-            return view == obj;
+        public int getItemViewType(int position) {
+            return position; // Important pour utiliser layouts[position]
         }
 
-
-        @Override
-        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-            View view = (View) object;
-            container.removeView(view);
+        class ViewHolder extends RecyclerView.ViewHolder {
+            ViewHolder(@NonNull View itemView) {
+                super(itemView);
+            }
         }
     }
 

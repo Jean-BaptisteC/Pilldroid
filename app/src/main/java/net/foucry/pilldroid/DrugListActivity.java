@@ -26,7 +26,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
@@ -361,7 +360,6 @@ public class DrugListActivity extends AppCompatActivity {
      * @param recyclerView RecyclerView
      */
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.addItemDecoration(new DividerItemDecoration(getApplication(), DividerItemDecoration.VERTICAL));
         mAdapter = new RecyclerViewAdapter(prescriptionList);
         recyclerView.setAdapter(mAdapter);
 
@@ -501,7 +499,6 @@ public class DrugListActivity extends AppCompatActivity {
 
             // Test to change background programmatically
             if (mValues.get(position).getTake() == 0) {
-                holder.mView.setBackgroundResource(R.drawable.gradient_bg);
                 holder.mIconView.setImageResource(R.drawable.ic_suspended_pill);
 
                 holder.mView.setOnClickListener(v -> {
@@ -516,14 +513,14 @@ public class DrugListActivity extends AppCompatActivity {
             } else {
                 int remainingStock = (int) Math.floor(mValues.get(position).getStock() / mValues.get(position).getTake());
                 if (remainingStock <= mValues.get(position).getAlertThreshold()) {
-                    holder.mView.setBackgroundResource(R.drawable.gradient_bg_alert);
+                    holder.mView.setBackgroundColor(ContextCompat.getColor(getApplication(), R.color.red));
                     holder.mIconView.setImageResource(R.drawable.ic_sentiment_dissatisfied);
                 } else if ((remainingStock > mValues.get(position).getAlertThreshold()) &&
                         (remainingStock <= (mValues.get(position).getWarnThreshold()))) {
-                    holder.mView.setBackgroundResource(R.drawable.gradient_bg_warning);
+                    holder.mView.setBackgroundColor(ContextCompat.getColor(getApplication(), R.color.yellow));
                     holder.mIconView.setImageResource(R.drawable.ic_sentiment_neutral);
                 } else {
-                    holder.mView.setBackgroundResource(R.drawable.gradient_bg_ok);
+                    holder.mView.setBackgroundColor(ContextCompat.getColor(getApplication(), R.color.green));
                     holder.mIconView.setImageResource(R.drawable.ic_sentiment_satisfied);
                 }
 

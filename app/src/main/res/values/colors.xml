@@ -16,5 +16,7 @@
     <color name="led">#31f623</color>
     <color name="grey">#777</color>
 
-    <color name="warning">#FFF7C01E</color>
+    <color name="yellow">#FFB300</color>
+    <color name="red">#E53935</color>
+    <color name="green">#4CAF50</color>
 </resources>

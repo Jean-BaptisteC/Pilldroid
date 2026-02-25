@@ -196,7 +196,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            // Rien à binder car chaque page est un layout statique
         }
 
         @Override
@@ -206,7 +205,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public int getItemViewType(int position) {
-            return position; // Important pour utiliser layouts[position]
+            return layouts[position];
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {

@@ -38,7 +38,6 @@
         android:layout_height="wrap_content"
         app:fabSize="normal"
         android:layout_gravity="center|bottom"
-        android:scaleType="center"
         android:layout_margin="@dimen/fab_margin"
         android:contentDescription="@string/save"
         android:text="@string/save"

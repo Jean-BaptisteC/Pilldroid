@@ -2,7 +2,6 @@ package net.foucry.pilldroid;
 
 import static android.Manifest.permission.POST_NOTIFICATIONS;
 import static android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM;
-
 import static net.foucry.pilldroid.utils.Constants.build;
 
 import android.content.Intent;
@@ -17,19 +16,17 @@ import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.textview.MaterialTextView;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 
 import net.foucry.pilldroid.utils.Utils;
 
@@ -39,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     private ActivityResultLauncher<String> requestNotificationPermission;
     private ViewPager viewPager;
-    private LinearLayout dotsLayout;
+    private LinearProgressIndicator progresssIndicator;
     private int[] layouts;
     private MaterialButton btnSkip, btnNext;
     //  viewpager change listener
@@ -47,8 +44,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public void onPageSelected(int position) {
-            addBottomDots(position);
-
             // changing the next button text 'NEXT' / 'GOT IT'
             if (position == layouts.length - 1) {
                 // last page. make button text to GOT IT
@@ -59,6 +54,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 btnNext.setText(getString(R.string.next));
                 btnSkip.setVisibility(View.VISIBLE);
             }
+            int progress = (int) (((viewPager.getCurrentItem() + 1f) / layouts.length) * 100);
+            progresssIndicator.setProgress(progress, true);
         }
 
         @Override
@@ -93,7 +90,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setFullScreen();
 
         viewPager = findViewById(R.id.view_pager);
-        dotsLayout = findViewById(R.id.layoutDots);
+        progresssIndicator = findViewById(R.id.progress_indicator);
         btnSkip = findViewById(R.id.btn_skip);
         btnNext = findViewById(R.id.btn_next);
 
@@ -113,9 +110,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome10,
                 R.layout.welcome11};
 
-        // adding bottom dots
-        addBottomDots(0);
-
         // making notification bar transparent
         changeStatusBarColor();
         Utils.changedNavigationBarColor(this);
@@ -129,11 +123,10 @@ public class WelcomeActivity extends AppCompatActivity {
         btnNext.setOnClickListener(v -> {
             // checking for last page
             // if last page home screen will be launched
-            int current = getItem();
-            if (current < layouts.length) {
+            int current = viewPager.getCurrentItem();
+            if (current < layouts.length -1) {
                 // move to next screen
-                viewPager.setCurrentItem(current);
-                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+                viewPager.setCurrentItem(current + 1, true);
             } else {
                 launchHomeScreen();
             }
@@ -163,22 +156,6 @@ public class WelcomeActivity extends AppCompatActivity {
         dlg.setPositiveButton(R.string.ok, (dialog, id) -> dialog.dismiss());
         dlg.setCancelable(false);
         dlg.show();
-    }
-
-    private void addBottomDots(int currentPage) {
-        MaterialTextView[] dots = new MaterialTextView[layouts.length];
-
-        dotsLayout.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new MaterialTextView(this);
-            dots[i].setText("∙");
-            dots[i].setTextSize(65);
-            dots[i].setTextColor(ContextCompat.getColor(this, R.color.dot_dark));
-            dotsLayout.addView(dots[i]);
-        }
-
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
     }
 
     private int getItem() {

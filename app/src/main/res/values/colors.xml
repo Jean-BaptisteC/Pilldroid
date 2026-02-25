@@ -10,9 +10,6 @@
     <color name="onPrimaryContainer">#394379</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="dot_light">#7f7f5d</color>
-    <color name="dot_dark">#000000</color>
-
     <color name="led">#31f623</color>
     <color name="grey">#777</color>
 

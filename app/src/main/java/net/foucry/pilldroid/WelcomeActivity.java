@@ -205,7 +205,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         @Override
         public int getItemViewType(int position) {
-            return layouts[position];
+            return position;
         }
 
         class ViewHolder extends RecyclerView.ViewHolder {

@@ -76,4 +76,5 @@
     <string name="drug_deleted">Médicament supprimé</string>
     <string name="permission_denied">Permission non autorisé</string>
     <string name="edit">Editer</string>
+    <string name="code">Code source</string>
 </resources>
